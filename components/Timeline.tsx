@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Code2, Activity } from 'lucide-react'
-import {timelineItems} from "@/app/data/timelineData";
+import {ITimelineItem, timelineItems} from "@/app/data/timelineData";
 
 export default function Timeline() {
   return (
@@ -17,9 +17,9 @@ export default function Timeline() {
   )
 }
 
-function TimelineItem({ item, index }) {
+function TimelineItem({ item, index } : {item : ITimelineItem, index: number}) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
     <div className="ml-8 mb-12 relative" ref={ref}>

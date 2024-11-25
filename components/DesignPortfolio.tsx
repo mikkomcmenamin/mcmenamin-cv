@@ -4,10 +4,10 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
 import { X } from 'lucide-react'
-import {portfolioItems} from "@/app/data/portfolioData";
+import {IPortfolioItem, portfolioItems} from "@/app/data/portfolioData";
 
 export default function DesignPortfolio() {
-  const [selectedItem, setSelectedItem] = useState(null)
+  const [selectedItem, setSelectedItem] = useState<IPortfolioItem | null>(null)
 
   return (
     <section className="mt-16">

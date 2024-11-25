@@ -28,30 +28,30 @@ const ParallaxBackground = () => {
   }, [])
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      {shapes.map((shape, index) => (
-        <motion.div
-          key={index}
-          className="absolute"
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-          }}
-          animate={{
-            x: mousePosition.x * (0.02 + index * 0.01),
-            y: mousePosition.y * (0.02 + index * 0.01),
-          }}
-          transition={{ type: 'spring', stiffness: 50, damping: 20 }}
-          style={{
-            width: shape.size,
-            height: shape.size,
-            backgroundColor: shape.color,
-            borderRadius: shape.type === 'circle' ? '50%' : shape.type === 'square' ? '0%' : '0%',
-            clipPath: shape.type === 'triangle' ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none',
-          }}
-        />
-      ))}
-    </div>
+      <div className="absolute inset-0 overflow-hidden">
+        {shapes.map((shape, index) => (
+            <motion.div
+                key={index}
+                className="absolute"
+                initial={{
+                  x: Math.random() * window.innerWidth,
+                  y: Math.random() * window.innerHeight,
+                }}
+                animate={{
+                  x: mousePosition.x * (0.02 + index * 0.01),
+                  y: mousePosition.y * (0.02 + index * 0.01),
+                }}
+                transition={{ type: 'spring', stiffness: 50, damping: 20 }}
+                style={{
+                  width: shape.size,
+                  height: shape.size,
+                  backgroundColor: shape.color,
+                  borderRadius: shape.type === 'circle' ? '50%' : shape.type === 'square' ? '0%' : '0%',
+                  clipPath: shape.type === 'triangle' ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none',
+                }}
+            />
+        ))}
+      </div>
   )
 }
 

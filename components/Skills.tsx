@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import {skills} from "@/app/data/skillsData";
+import {ISkill, skills} from "@/app/data/skillsData";
 
 export default function Skills() {
   return (
@@ -17,7 +17,7 @@ export default function Skills() {
   )
 }
 
-function SkillBar({ skill, index }) {
+function SkillBar({ skill, index } : {skill: ISkill, index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 

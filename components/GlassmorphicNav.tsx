@@ -4,7 +4,13 @@ import { motion } from 'framer-motion'
 import { User, Briefcase, Code, Palette, GraduationCap, Mail } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
-const navItems = [
+interface INavItem {
+  icon: any,
+  label: string,
+  sectionId: string,
+}
+
+const navItems:INavItem[] = [
   { icon: User, label: 'About', sectionId: 'about' },
   { icon: Briefcase, label: 'Experience', sectionId: 'experience' },
   { icon: Code, label: 'Skills', sectionId: 'skills' },

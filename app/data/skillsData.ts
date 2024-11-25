@@ -1,4 +1,9 @@
-export const skills = [
+export interface ISkill {
+  name: string
+  level: number
+}
+
+export const skills: ISkill[] = [
   { name: 'NextJS', level: 95 },
   { name: 'React', level: 95 },
   { name: 'Flutter', level: 90 },

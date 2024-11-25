@@ -1,4 +1,11 @@
-export const portfolioItems = [
+export interface IPortfolioItem {
+  title: string,
+  description: string,
+  image: string,
+  tags: string[],
+}
+
+export const portfolioItems: IPortfolioItem[] = [
   {
     title: 'Neon City',
     description: 'A futuristic cityscape design concept',

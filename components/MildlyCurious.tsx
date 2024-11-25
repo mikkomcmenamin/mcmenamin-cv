@@ -7,7 +7,7 @@ export default function MildlyCurious() {
     <section>
       <h2 className="text-2xl font-semibold mb-6 text-cyan-300 flex items-center gap-2">
         <Music className="w-6 h-6" />
-        Ember Falls
+        Music
       </h2>
       <div className="space-y-6">
         <div className="bg-gradient-to-r from-gray-900 to-gray-800 p-6 rounded-lg shadow-xl border border-cyan-800">

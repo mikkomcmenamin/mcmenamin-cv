@@ -1,4 +1,21 @@
-export const timelineItems = [
+export interface ITimelineItem {
+  company: string;
+  position: string,
+  period: string;
+  description?: string;
+  projects?: Project[];
+  isActive?: boolean;
+  technologies?: string[];
+}
+
+export interface Project {
+  name: string;
+  period: string;
+  description: string;
+  technologies: string[];
+}
+
+export const timelineItems : ITimelineItem[] = [
   {
     company: 'Pareto Software Oy',
     position: 'Senior Frontend Developer',
