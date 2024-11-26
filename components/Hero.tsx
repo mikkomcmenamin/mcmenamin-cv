@@ -36,8 +36,9 @@ const ScrollIndicator = () => (
 
 const subtitles = [
     "full-stack software developer",
-    "designer",
-    "AI conjurer"
+    "ux/ui designer",
+    "product engineer",
+    "AI conjurer",
 ]
 
 export default function Hero() {

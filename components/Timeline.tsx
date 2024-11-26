@@ -2,15 +2,21 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code2, Activity } from "lucide-react";
+import { Code2, Activity, Info } from "lucide-react";
 import { ITimelineItem, timelineItems } from "@/lib/data/timelineData";
 
 export default function Timeline() {
   return (
     <section className="relative">
-      <h2 className="text-2xl font-semibold mb-8 text-cyan-300">
-        Professional Experience
-      </h2>
+      <div className="relative mb-8">
+        <h2 className="text-2xl font-semibold text-cyan-300">
+          Professional Experience
+        </h2>
+        <div className="absolute right-0 top-8 flex items-center text-[10px] text-cyan-400/60 italic">
+          <Info className="w-2.5 h-2.5 mr-1" />
+          <span>All disclosed companies and projects are listed with permission</span>
+        </div>
+      </div>
       <div className="absolute left-4 w-0.5 bg-gradient-to-b from-cyan-400 to-blue-500 top-[88px] bottom-0" />
       {timelineItems.map((item, index) => (
         <TimelineItem
@@ -38,11 +44,11 @@ function TimelineItem({
   return (
     <div className="ml-10 mb-12 relative" ref={ref}>
       <div className="absolute -left-[32px] top-2 w-4 h-4 bg-gray-900 rounded-full border-2 border-cyan-400 z-10">
-          <motion.div
-              className="w-full h-full rounded-full bg-cyan-400 absolute"
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
+        <motion.div
+          className="w-full h-full rounded-full bg-cyan-400 absolute"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}

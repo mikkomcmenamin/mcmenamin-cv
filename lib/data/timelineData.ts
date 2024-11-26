@@ -85,7 +85,7 @@ export const timelineItems : ITimelineItem[] = [
         technologies: ['Unity', 'C#', 'Pointclouds', 'Virtual Reality']
       },
       {
-        name: 'Undisclosed Maritime Client',
+        name: 'Undisclosed Client',
         period: '8/2019–10/2019',
         description: 'Improved code architecture and worked on several new features for a maritime situational awareness app.',
         technologies: ['Unity', 'C#']
