@@ -35,7 +35,7 @@ function BlackHole() {
     blending: THREE.AdditiveBlending,
   }), [])
 
-  useFrame((state, delta) => {
+  useFrame(() => {
     ref.current.rotation.x = THREE.MathUtils.lerp(
         ref.current.rotation.x,
         mouse.y * (Math.PI / 16),

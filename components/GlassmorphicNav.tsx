@@ -5,6 +5,7 @@ import { User, Briefcase, Code, Palette, GraduationCap, Mail } from 'lucide-reac
 import { useState, useEffect } from 'react'
 
 interface INavItem {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon: any,
   label: string,
   sectionId: string,

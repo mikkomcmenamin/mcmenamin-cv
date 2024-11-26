@@ -27,7 +27,6 @@ export default function Timeline() {
 function TimelineItem({
   item,
   index,
-  isFirst,
 }: {
   item: ITimelineItem;
   index: number;

@@ -10,7 +10,7 @@ export function useTypingAnimation(text: string, speed: number = 50) {
     let i = 0
     const timer = setInterval(() => {
       if (i < text.length) {
-        setDisplayedText((prev) => text.slice(0, i + 1))
+        setDisplayedText(() => text.slice(0, i + 1))
         i++
       } else {
         clearInterval(timer)
