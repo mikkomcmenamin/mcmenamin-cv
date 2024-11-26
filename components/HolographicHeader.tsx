@@ -23,8 +23,8 @@ export default function HolographicHeader() {
   return (
     <header className="relative w-full h-[400px] mb-12 overflow-hidden rounded-lg bg-gray-900 flex items-center justify-center">
       <GridBackground />
-      <GlowingOrb style={{ top: '10%', left: '20%' }} />
-      <GlowingOrb style={{ bottom: '10%', right: '20%' }} />
+      <GlowingOrb />
+      <GlowingOrb />
       
       <div className="relative z-10 text-center">
         <motion.h1
