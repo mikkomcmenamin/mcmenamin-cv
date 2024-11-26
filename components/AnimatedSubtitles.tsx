@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import {useTypingAnimation} from "@/app/hooks/useTypingAnimation";
+import {useTypingAnimation} from "@/lib/hooks/useTypingAnimation";
 
 const BlinkingCursor = () => (
     <motion.span

@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Code2, Activity } from "lucide-react";
-import { ITimelineItem, timelineItems } from "@/app/data/timelineData";
+import { ITimelineItem, timelineItems } from "@/lib/data/timelineData";
 
 export default function Timeline() {
   return (

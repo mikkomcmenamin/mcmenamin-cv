@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
 import { X } from 'lucide-react'
-import {IPortfolioItem, portfolioItems} from "@/app/data/portfolioData";
+import {IPortfolioItem, portfolioItems} from "@/lib/data/portfolioData";
 
 export default function DesignPortfolio() {
   const [selectedItem, setSelectedItem] = useState<IPortfolioItem | null>(null)

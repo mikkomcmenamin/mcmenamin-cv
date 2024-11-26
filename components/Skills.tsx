@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import {ISkill, skills} from "@/app/data/skillsData";
+import {ISkill, skills} from "@/lib/data/skillsData";
 
 export default function Skills() {
   return (

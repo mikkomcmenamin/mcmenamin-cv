@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { aboutMeData } from "../app/data/aboutMeData";
+import { aboutMeData } from "@/lib/data/aboutMeData";
 
 export default function AboutMe() {
   return (

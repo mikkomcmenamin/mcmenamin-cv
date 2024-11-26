@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Award, BookOpen } from 'lucide-react'
-import {certifications, educationItems} from "@/app/data/educationData";
+import {certifications, educationItems} from "@/lib/data/educationData";
 
 export default function Education() {
   return (
