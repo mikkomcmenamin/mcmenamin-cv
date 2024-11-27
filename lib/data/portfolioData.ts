@@ -5,6 +5,9 @@ export interface IPortfolioItem {
   tags: string[],
 }
 
+export const portfolioDescription  = "Pretty Okay Apps is my sidehustle and I'm currently working on building a portfolio of useful " +
+    "apps and tools for consumers and developers."
+
 export const portfolioItems: IPortfolioItem[] = [
   {
     title: 'Pretty Okay Stack [WIP]',

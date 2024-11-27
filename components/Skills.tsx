@@ -8,7 +8,7 @@ export default function Skills() {
   return (
     <section>
       <h2 className="text-2xl font-semibold mb-6 text-cyan-300">Tech Skills</h2>
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+      <div className="grid grid-cols-2 gap-2 gap-x-4">
         {skills.map((skill, index) => (
           <SkillBar key={skill.name} skill={skill} index={index} />
         ))}
