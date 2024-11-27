@@ -7,14 +7,16 @@ import { ITimelineItem, timelineItems } from "@/lib/data/timelineData";
 
 export default function Timeline() {
   return (
-    <section className="relative">
+    <section id="experience" className="relative min-h-screen">
       <div className="relative mb-8">
         <h2 className="text-2xl font-semibold text-cyan-300">
           Professional Experience
         </h2>
         <div className="absolute right-0 top-8 flex items-center text-[10px] text-cyan-400/60 italic">
           <Info className="w-2.5 h-2.5 mr-1" />
-          <span>All disclosed companies and projects are listed with permission</span>
+          <span>
+            All disclosed companies and projects are listed with permission
+          </span>
         </div>
       </div>
       <div className="absolute left-4 w-0.5 bg-gradient-to-b from-cyan-400 to-blue-500 top-[88px] bottom-0" />
