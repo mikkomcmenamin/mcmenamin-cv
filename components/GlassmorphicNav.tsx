@@ -90,7 +90,14 @@ export default function GlassmorphicNav() {
     <nav className="fixed bottom-0 left-0 right-0 z-50 md:right-4 md:top-1/2 md:left-auto md:bottom-auto md:transform md:-translate-y-1/2">
       <ul className="flex justify-around md:block md:space-y-4 p-2 md:p-0 backdrop-blur-md bg-gray-900 bg-opacity-50 border-t border-cyan-400 border-opacity-20 md:border-none">
         {navItems.map(({ icon: Icon, label, sectionId }) => (
-          <li key={sectionId} className="md:mb-4">
+          <li key={sectionId} className="md:mb-4 md:relative group">
+            <motion.div
+              className="hidden md:block absolute right-full top-[32%] -translate-y-1/2 mr-3 origin-right opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+            >
+              <span className="text-cyan-300 whitespace-nowrap">{label}</span>
+            </motion.div>
             <motion.a
               href={`#${sectionId}`}
               onClick={(e) => handleClick(e, sectionId)}
