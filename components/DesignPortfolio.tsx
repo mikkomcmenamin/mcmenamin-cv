@@ -14,7 +14,7 @@ export default function DesignPortfolio() {
   const [selectedItem, setSelectedItem] = useState<IPortfolioItem | null>(null);
 
   return (
-    <section className="mt-16">
+    <section className="mt-16" id="portfolio">
       <h2 className="text-2xl font-semibold mb-8 text-cyan-300">
         Pretty Okay Apps
       </h2>

@@ -4,7 +4,7 @@ import { Music } from 'lucide-react'
 
 export default function MildlyCurious() {
   return (
-    <section>
+    <section id="music">
       <h2 className="text-2xl font-semibold mb-6 text-cyan-300 flex items-center gap-2">
         <Music className="w-6 h-6" />
         Music
