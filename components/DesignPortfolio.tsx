@@ -11,7 +11,7 @@ export default function DesignPortfolio() {
 
   return (
     <section className="mt-16">
-      <h2 className="text-2xl font-semibold mb-8 text-cyan-300">Design Portfolio</h2>
+      <h2 className="text-2xl font-semibold mb-8 text-cyan-300">Pretty Okay Apps</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {portfolioItems.map((item, index) => (
           <motion.div

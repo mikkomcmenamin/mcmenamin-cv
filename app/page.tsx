@@ -16,7 +16,7 @@ export default function CVPage() {
       <Hero />
       <GlassmorphicNav />
 
-      <main className="max-w-4xl mx-auto px-4 py-16 space-y-32">
+      <main className="max-w-4xl mx-auto px-4 py-16 space-y-24">
         <AboutMe />
 
         <section id="experience">

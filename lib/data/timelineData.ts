@@ -20,7 +20,6 @@ export const timelineItems : ITimelineItem[] = [
     company: 'Pareto Software Oy',
     position: 'Senior Software Developer & Partner',
     period: '9/2023 - Present',
-    description: 'Worked on situational awareness software, generative AI and web applications for different clients. Designed and developed paretosoftware.fi website.',
     projects: [
       {
         name: 'Undisclosed Client',
