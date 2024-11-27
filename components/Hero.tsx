@@ -1,11 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import AnimatedSubtitles from "./AnimatedSubtitles";
 import BlackHole from "./BlackHole";
 import SpaceBackground from "./SpaceBackground";
+import LoadingCircle from "./LoadingCircle";
 
 const GradientBackground = () => (
   <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-75" />
@@ -45,45 +46,66 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 1500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-      {mounted && (
-        <>
-          <SpaceBackground />
-          <GradientBackground />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-full h-full max-w-3xl max-h-3xl">
-              <BlackHole />
-            </div>
-          </div>
-
+      <AnimatePresence>
+        {!mounted ? (
           <motion.div
-            className="relative z-20 text-center max-w-5xl px-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            key="loading"
+            className="absolute inset-0 flex items-center justify-center"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <motion.h1
-              className="text-4xl sm:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300 tracking-wider uppercase"
-              animate={{ y: [0, -10, 0] }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{ textShadow: "0 0 20px rgba(0, 255, 255, 0.5)" }}
-            >
-              Mikko McMenamin
-            </motion.h1>
-            <AnimatedSubtitles subtitles={subtitles} />
+            <LoadingCircle />
           </motion.div>
+        ) : (
+          <>
+            <SpaceBackground />
+            <GradientBackground />
+            <motion.div
+              key="blackhole"
+              className="absolute inset-0 flex items-center justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="w-full h-full max-w-3xl max-h-3xl">
+                <BlackHole />
+              </div>
+            </motion.div>
 
-          <ScrollIndicator />
-        </>
-      )}
+            <motion.div
+              className="relative z-20 text-center max-w-5xl px-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.h1
+                className="text-4xl sm:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300 tracking-wider uppercase"
+                animate={{ y: [0, -10, 0] }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                style={{ textShadow: "0 0 20px rgba(0, 255, 255, 0.5)" }}
+              >
+                Mikko McMenamin
+              </motion.h1>
+              <AnimatedSubtitles subtitles={subtitles} />
+            </motion.div>
+
+            <ScrollIndicator />
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
