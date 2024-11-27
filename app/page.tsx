@@ -12,7 +12,7 @@ import AboutMe from "../components/AboutMe";
 
 export default function CVPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black from-5% via-gray-950 via-40% to-black text-white pb-24">
+    <div className="min-h-screen pb-24">
       <Hero />
       <GlassmorphicNav />
 
