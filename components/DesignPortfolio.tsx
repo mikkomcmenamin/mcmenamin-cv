@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { X } from "lucide-react";
+import { X, Code2 } from "lucide-react";
 import {
   IPortfolioItem,
   portfolioDescription,
@@ -38,7 +38,7 @@ export default function DesignPortfolio() {
               height={400}
               className="object-cover w-full h-64 transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
               <h3 className="text-xl font-semibold text-white mb-2">
                 {item.title}
               </h3>
@@ -83,8 +83,9 @@ export default function DesignPortfolio() {
               {selectedItem.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="px-2 py-1 bg-cyan-900 text-cyan-300 rounded-full text-sm"
+                  className="px-2 py-1 bg-cyan-900 text-cyan-300 rounded-full text-sm inline-flex items-center"
                 >
+                  <Code2 className="w-3 h-3 mr-1" />
                   {tag}
                 </span>
               ))}
