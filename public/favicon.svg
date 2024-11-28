@@ -1,0 +1,13 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black background -->
+  <circle cx="16" cy="16" r="16" fill="black"/>
+  
+  <!-- Blue glow ring -->
+  <circle cx="16" cy="16" r="10" stroke="#3B82F6" stroke-width="1.5" opacity="1"/>
+  
+  <!-- Event horizon (black hole center) -->
+  <circle cx="16" cy="16" r="8" fill="black"/>
+  
+  <!-- Inner blue ring -->
+  <circle cx="16" cy="16" r="6" stroke="#3B82F6" stroke-width="1" opacity="0.9"/>
+</svg> 
