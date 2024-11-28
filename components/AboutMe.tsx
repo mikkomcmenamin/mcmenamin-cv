@@ -3,6 +3,12 @@
 import { motion } from 'framer-motion';
 import { aboutMeData } from '@/lib/data/aboutMeData';
 
+interface WorkItem {
+  position: string;
+  company: string;
+  url?: string;
+}
+
 export default function AboutMe() {
   return (
     <motion.section
@@ -26,7 +32,7 @@ export default function AboutMe() {
       >
         <p className="text-sm text-cyan-200">Currently:</p>
         <div className="mt-2 flex flex-col gap-2">
-          {aboutMeData.currentWork.map((work, index) => (
+          {aboutMeData.currentWork.map((work: WorkItem, index) => (
             <motion.div
               key={work.company}
               className="flex items-center gap-2"

@@ -1,4 +1,16 @@
-export const aboutMeData = {
+interface WorkItem {
+  position: string;
+  company: string;
+  url?: string;
+}
+
+interface AboutMeData {
+  title: string;
+  description: string;
+  currentWork: WorkItem[];
+}
+
+export const aboutMeData: AboutMeData = {
   title: 'Hey visitor!',
   description:
     "Welcome to my homepage! I'm an experienced software developer with over 8 years of expertise building enterprise applications. " +
@@ -18,4 +30,4 @@ export const aboutMeData = {
       url: 'https://prettyokaystack.com',
     },
   ],
-} as const;
+};
