@@ -14,16 +14,16 @@ export default function FuturisticContact() {
         className="flex justify-center space-x-6"
       >
         {[
-          { icon: Mail, href: 'mailto:john.doe@future.com', label: 'Email' },
-          { icon: Github, href: 'https://github.com/johndoe', label: 'GitHub' },
+          { icon: Mail, href: 'mailto:mikko.mcmenamin@gmail.com', label: 'Email' },
+          { icon: Github, href: 'https://github.com/mikkomcmenamin', label: 'GitHub' },
           {
             icon: Linkedin,
-            href: 'https://linkedin.com/in/johndoe',
+            href: 'https://linkedin.com/in/mikkomcmenamin',
             label: 'LinkedIn',
           },
           {
             icon: Twitter,
-            href: 'https://twitter.com/mikkomcmenamin',
+            href: 'https://x.com/mikkocodes',
             label: 'X (Twitter)',
           },
         ].map((item, index) => (
