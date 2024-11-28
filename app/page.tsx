@@ -12,11 +12,11 @@ import AboutMe from '../components/AboutMe';
 
 export default function CVPage() {
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen w-full overflow-x-hidden pb-24">
       <Hero />
       <GlassmorphicNav />
 
-      <main className="mx-auto max-w-4xl space-y-24 px-4 py-16">
+      <main className="mx-auto w-full max-w-4xl space-y-24 px-4 py-16">
         <AboutMe />
 
         <section id="experience">

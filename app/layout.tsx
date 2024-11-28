@@ -19,9 +19,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head />
+      <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        />
+      </head>
       <body
-        className={`${spaceGrotesk.className} bg-gradient-to-b from-black from-5% via-gray-950 via-40% to-black text-white`}
+        className={`${spaceGrotesk.className} overflow-x-hidden bg-gradient-to-b from-black from-5% via-gray-950 via-40% to-black text-white`}
       >
         {children}
       </body>
