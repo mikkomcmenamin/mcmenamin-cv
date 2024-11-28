@@ -4,10 +4,10 @@ import Hero from '../components/Hero';
 import Timeline from '../components/Timeline';
 import Skills from '../components/Skills';
 import Education from '../components/Education';
-import FuturisticContact from '../components/FuturisticContact';
+import Contact from '../components/Contact';
 import DesignPortfolio from '../components/DesignPortfolio';
 import GlassmorphicNav from '../components/GlassmorphicNav';
-import MildlyCurious from '../components/MildlyCurious';
+import MusicSection from '../components/MusicSection';
 import AboutMe from '../components/AboutMe';
 
 export default function CVPage() {
@@ -36,11 +36,11 @@ export default function CVPage() {
         </section>
 
         <section>
-          <MildlyCurious />
+          <MusicSection />
         </section>
 
         <section id="contact">
-          <FuturisticContact />
+          <Contact />
         </section>
       </main>
     </div>

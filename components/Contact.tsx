@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
 
-export default function FuturisticContact() {
+export default function Contact() {
   return (
     <section>
       <h2 className="mb-6 text-2xl font-semibold text-cyan-300">Contact</h2>

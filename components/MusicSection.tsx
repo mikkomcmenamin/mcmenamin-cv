@@ -3,7 +3,7 @@
 import { Music } from 'lucide-react';
 import YouTubeEmbed from './YouTubeEmbed';
 
-export default function MildlyCurious() {
+export default function MusicSection() {
   return (
     <section id="music">
       <h2 className="mb-6 flex items-center gap-2 text-2xl font-semibold text-cyan-300">
