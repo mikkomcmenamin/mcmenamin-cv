@@ -1,34 +1,34 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { useState } from "react";
-import { X, Code2 } from "lucide-react";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { useState } from 'react';
+import { X, Code2 } from 'lucide-react';
 import {
   IPortfolioItem,
   portfolioDescription,
   portfolioItems,
-} from "@/lib/data/portfolioData";
+} from '@/lib/data/portfolioData';
 
 export default function DesignPortfolio() {
   const [selectedItem, setSelectedItem] = useState<IPortfolioItem | null>(null);
 
   return (
     <section className="mt-16" id="portfolio">
-      <h2 className="text-2xl font-semibold mb-8 text-cyan-300">
+      <h2 className="mb-8 text-2xl font-semibold text-cyan-300">
         Pretty Okay Apps
       </h2>
-      <p className="text-cyan-100 leading-relaxed mb-6 sm:mb-8">
+      <p className="mb-6 leading-relaxed text-cyan-100 sm:mb-8">
         {portfolioDescription}
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {portfolioItems.map((item, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group relative overflow-hidden rounded-lg cursor-pointer"
+            className="group relative cursor-pointer overflow-hidden rounded-lg"
             onClick={() => setSelectedItem(item)}
           >
             <Image
@@ -36,13 +36,13 @@ export default function DesignPortfolio() {
               alt={item.title}
               width={600}
               height={400}
-              className="object-cover w-full h-64 transition-transform duration-300 group-hover:scale-105"
+              className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-              <h3 className="text-xl font-semibold text-white mb-2">
+            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black via-black/60 to-black/30 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <h3 className="mb-2 text-xl font-semibold text-white">
                 {item.title}
               </h3>
-              <p className="text-cyan-300 text-sm">{item.description}</p>
+              <p className="text-sm text-cyan-300">{item.description}</p>
             </div>
           </motion.div>
         ))}
@@ -53,22 +53,22 @@ export default function DesignPortfolio() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4"
           onClick={() => setSelectedItem(null)}
         >
           <div
-            className="bg-gray-900 p-6 rounded-lg max-w-3xl w-full"
+            className="w-full max-w-3xl rounded-lg bg-gray-900 p-6"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-start mb-4">
+            <div className="mb-4 flex items-start justify-between">
               <h3 className="text-2xl font-semibold text-cyan-300">
                 {selectedItem.title}
               </h3>
               <button
                 onClick={() => setSelectedItem(null)}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 transition-colors hover:text-white"
               >
-                <X className="w-6 h-6" />
+                <X className="h-6 w-6" />
               </button>
             </div>
             <Image
@@ -76,16 +76,16 @@ export default function DesignPortfolio() {
               alt={selectedItem.title}
               width={600}
               height={400}
-              className="w-full h-auto rounded-lg mb-4"
+              className="mb-4 h-auto w-full rounded-lg"
             />
-            <p className="text-cyan-100 mb-4">{selectedItem.description}</p>
+            <p className="mb-4 text-cyan-100">{selectedItem.description}</p>
             <div className="flex flex-wrap gap-2">
               {selectedItem.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="px-2 py-1 bg-cyan-900 text-cyan-300 rounded-full text-sm inline-flex items-center"
+                  className="inline-flex items-center rounded-full bg-cyan-900 px-2 py-1 text-sm text-cyan-300"
                 >
-                  <Code2 className="w-3 h-3 mr-1" />
+                  <Code2 className="mr-1 h-3 w-3" />
                   {tag}
                 </span>
               ))}

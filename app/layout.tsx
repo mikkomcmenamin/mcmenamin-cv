@@ -1,11 +1,11 @@
-import "./globals.css";
-import { Space_Grotesk } from "next/font/google";
+import './globals.css';
+import { Space_Grotesk } from 'next/font/google';
 
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "Mikko McMenamin",
-  description: "Senior Software Developer",
+  title: 'Mikko McMenamin',
+  description: 'Senior Software Developer',
 };
 
 export default function RootLayout({

@@ -1,13 +1,13 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 export default function LoadingCircle() {
   return (
-    <div className="w-full h-full flex items-center justify-center">
+    <div className="flex h-full w-full items-center justify-center">
       <motion.div
-        className="w-[90vw] h-[90vw] md:w-[50vw] md:h-[50vw] rounded-full border-2 border-transparent"
+        className="h-[90vw] w-[90vw] rounded-full border-2 border-transparent md:h-[50vw] md:w-[50vw]"
         style={{
-          borderRightColor: "#60A5FA", // blue-400
-          borderTopColor: "#67E8F9", // cyan-300
+          borderRightColor: '#60A5FA', // blue-400
+          borderTopColor: '#67E8F9', // cyan-300
         }}
         initial={{
           rotate: 0,
@@ -21,7 +21,7 @@ export default function LoadingCircle() {
           opacity: { duration: 0.3 },
           rotate: {
             duration: 1,
-            ease: "linear",
+            ease: 'linear',
             repeat: Infinity,
             delay: 0,
           },

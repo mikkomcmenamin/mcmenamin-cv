@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 import {
   User,
   Briefcase,
@@ -9,8 +9,8 @@ import {
   GraduationCap,
   Mail,
   Music,
-} from "lucide-react";
-import { useState, useEffect } from "react";
+} from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 interface INavItem {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,17 +20,17 @@ interface INavItem {
 }
 
 const navItems: INavItem[] = [
-  { icon: User, label: "About", sectionId: "about" },
-  { icon: Briefcase, label: "Experience", sectionId: "experience" },
-  { icon: Code, label: "Skills", sectionId: "skills" },
-  { icon: Palette, label: "Portfolio", sectionId: "portfolio" },
-  { icon: GraduationCap, label: "Education", sectionId: "education" },
-  { icon: Music, label: "Music", sectionId: "music" },
-  { icon: Mail, label: "Contact", sectionId: "contact" },
+  { icon: User, label: 'About', sectionId: 'about' },
+  { icon: Briefcase, label: 'Experience', sectionId: 'experience' },
+  { icon: Code, label: 'Skills', sectionId: 'skills' },
+  { icon: Palette, label: 'Portfolio', sectionId: 'portfolio' },
+  { icon: GraduationCap, label: 'Education', sectionId: 'education' },
+  { icon: Music, label: 'Music', sectionId: 'music' },
+  { icon: Mail, label: 'Contact', sectionId: 'contact' },
 ];
 
 export default function GlassmorphicNav() {
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState('');
 
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -44,7 +44,7 @@ export default function GlassmorphicNav() {
         element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: elementPosition - offset,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -80,41 +80,41 @@ export default function GlassmorphicNav() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     handleScroll(); // Call once to set initial active section
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 md:right-4 md:top-1/2 md:left-auto md:bottom-auto md:transform md:-translate-y-1/2">
-      <ul className="flex justify-around md:block md:space-y-4 p-2 md:p-0 backdrop-blur-md bg-gray-900 bg-opacity-50 border-t border-cyan-400 border-opacity-20 md:border-none">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 md:bottom-auto md:left-auto md:right-4 md:top-1/2 md:-translate-y-1/2 md:transform">
+      <ul className="flex justify-around border-t border-cyan-400 border-opacity-20 bg-gray-900 bg-opacity-50 p-2 backdrop-blur-md md:block md:space-y-4 md:border-none md:p-0">
         {navItems.map(({ icon: Icon, label, sectionId }) => (
-          <li key={sectionId} className="md:mb-4 md:relative group">
+          <li key={sectionId} className="group md:relative md:mb-4">
             <motion.div
-              className="hidden md:block absolute right-full top-[32%] -translate-y-1/2 mr-3 origin-right opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              className="absolute right-full top-[32%] mr-3 hidden origin-right -translate-y-1/2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 md:block"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
             >
-              <span className="text-cyan-300 whitespace-nowrap">{label}</span>
+              <span className="whitespace-nowrap text-cyan-300">{label}</span>
             </motion.div>
             <motion.a
               href={`#${sectionId}`}
               onClick={(e) => handleClick(e, sectionId)}
-              className={`block p-3 rounded-full backdrop-blur-md border border-cyan-400 shadow-lg transition-all duration-300 
+              className={`block rounded-full border border-cyan-400 p-3 shadow-lg backdrop-blur-md transition-all duration-300 
                 ${
                   activeSection === sectionId
-                    ? "bg-cyan-400 bg-opacity-25 border-opacity-50 shadow-cyan-400/20"
-                    : "bg-cyan-400 bg-opacity-10 border-opacity-20 hover:bg-opacity-20"
+                    ? 'border-opacity-50 bg-cyan-400 bg-opacity-25 shadow-cyan-400/20'
+                    : 'border-opacity-20 bg-cyan-400 bg-opacity-10 hover:bg-opacity-20'
                 }`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               <Icon
-                className={`w-6 h-6 ${
+                className={`h-6 w-6 ${
                   activeSection === sectionId
-                    ? "text-cyan-100"
-                    : "text-cyan-300"
+                    ? 'text-cyan-100'
+                    : 'text-cyan-300'
                 }`}
               />
               <span className="sr-only">{label}</span>

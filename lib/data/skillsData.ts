@@ -1,6 +1,6 @@
 export interface ISkill {
-  name: string
-  level: number
+  name: string;
+  level: number;
 }
 
 export const skills: ISkill[] = [
@@ -31,5 +31,4 @@ export const skills: ISkill[] = [
   { name: 'Railway', level: 80 },
   { name: 'Google Cloud', level: 65 },
   { name: 'Azure', level: 60 },
-]
-
+];

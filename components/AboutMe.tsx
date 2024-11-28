@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { aboutMeData } from "@/lib/data/aboutMeData";
+import { motion } from 'framer-motion';
+import { aboutMeData } from '@/lib/data/aboutMeData';
 
 export default function AboutMe() {
   return (
@@ -11,21 +11,21 @@ export default function AboutMe() {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.2, duration: 0.8 }}
     >
-      <h2 className="text-2xl font-semibold mb-6 text-cyan-300">
+      <h2 className="mb-6 text-2xl font-semibold text-cyan-300">
         {aboutMeData.title}
       </h2>
-      <p className="text-cyan-100 leading-relaxed mb-4">
+      <p className="mb-4 leading-relaxed text-cyan-100">
         {aboutMeData.description}
       </p>
 
       <motion.div
-        className="bg-cyan-950/50 p-4 rounded-lg border border-cyan-800/50"
+        className="rounded-lg border border-cyan-800/50 bg-cyan-950/50 p-4"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.5 }}
       >
-        <p className="text-cyan-200 text-sm">Currently:</p>
-        <div className="flex flex-col gap-2 mt-2">
+        <p className="text-sm text-cyan-200">Currently:</p>
+        <div className="mt-2 flex flex-col gap-2">
           {aboutMeData.currentWork.map((work, index) => (
             <motion.div
               key={work.company}
@@ -36,7 +36,7 @@ export default function AboutMe() {
             >
               <span className="text-cyan-100">{work.position} @</span>
               <motion.span
-                className="text-cyan-300 font-semibold"
+                className="font-semibold text-cyan-300"
                 animate={{ opacity: [1, 0.7, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
@@ -45,7 +45,7 @@ export default function AboutMe() {
                     href={work.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-cyan-400 transition-colors"
+                    className="transition-colors hover:text-cyan-400"
                   >
                     {work.company}
                   </a>

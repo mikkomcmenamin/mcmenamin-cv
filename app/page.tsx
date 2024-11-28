@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import Hero from "../components/Hero";
-import Timeline from "../components/Timeline";
-import Skills from "../components/Skills";
-import Education from "../components/Education";
-import FuturisticContact from "../components/FuturisticContact";
-import DesignPortfolio from "../components/DesignPortfolio";
-import GlassmorphicNav from "../components/GlassmorphicNav";
-import MildlyCurious from "../components/MildlyCurious";
-import AboutMe from "../components/AboutMe";
+import Hero from '../components/Hero';
+import Timeline from '../components/Timeline';
+import Skills from '../components/Skills';
+import Education from '../components/Education';
+import FuturisticContact from '../components/FuturisticContact';
+import DesignPortfolio from '../components/DesignPortfolio';
+import GlassmorphicNav from '../components/GlassmorphicNav';
+import MildlyCurious from '../components/MildlyCurious';
+import AboutMe from '../components/AboutMe';
 
 export default function CVPage() {
   return (
@@ -16,7 +16,7 @@ export default function CVPage() {
       <Hero />
       <GlassmorphicNav />
 
-      <main className="max-w-4xl mx-auto px-4 py-16 space-y-24">
+      <main className="mx-auto max-w-4xl space-y-24 px-4 py-16">
         <AboutMe />
 
         <section id="experience">

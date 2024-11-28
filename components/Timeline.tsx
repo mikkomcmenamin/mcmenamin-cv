@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Code2, Activity, Info } from "lucide-react";
-import { ITimelineItem, timelineItems } from "@/lib/data/timelineData";
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { Code2, Activity, Info } from 'lucide-react';
+import { ITimelineItem, timelineItems } from '@/lib/data/timelineData';
 
 export default function Timeline() {
   return (
@@ -12,14 +12,14 @@ export default function Timeline() {
         <h2 className="text-2xl font-semibold text-cyan-300">
           Professional Experience
         </h2>
-        <div className="absolute right-0 top-8 flex items-center text-[10px] text-cyan-400/60 italic">
-          <Info className="w-2.5 h-2.5 mr-1" />
+        <div className="absolute right-0 top-8 flex items-center text-[10px] italic text-cyan-400/60">
+          <Info className="mr-1 h-2.5 w-2.5" />
           <span>
             All disclosed companies and projects are listed with permission
           </span>
         </div>
       </div>
-      <div className="absolute left-4 w-0.5 bg-gradient-to-b from-cyan-400 to-blue-500 top-[88px] bottom-0" />
+      <div className="absolute bottom-0 left-4 top-[88px] w-0.5 bg-gradient-to-b from-cyan-400 to-blue-500" />
       {timelineItems.map((item, index) => (
         <TimelineItem
           key={index}
@@ -44,12 +44,12 @@ function TimelineItem({
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <div className="ml-10 mb-12 relative" ref={ref}>
-      <div className="absolute -left-[32px] top-2 w-4 h-4 bg-gray-900 rounded-full border-2 border-cyan-400 z-10">
+    <div className="relative mb-12 ml-10" ref={ref}>
+      <div className="absolute -left-[32px] top-2 z-10 h-4 w-4 rounded-full border-2 border-cyan-400 bg-gray-900">
         <motion.div
-          className="w-full h-full rounded-full bg-cyan-400 absolute"
+          className="absolute h-full w-full rounded-full bg-cyan-400"
           animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
       <motion.div
@@ -59,8 +59,8 @@ function TimelineItem({
         }
         transition={{ duration: 0.5, delay: index * 0.1 }}
       >
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 p-6 rounded-lg shadow-xl border border-cyan-800">
-          <div className="mb-4 flex justify-between items-start">
+        <div className="rounded-lg border border-cyan-800 bg-gradient-to-r from-gray-900 to-gray-800 p-6 shadow-xl">
+          <div className="mb-4 flex items-start justify-between">
             <div>
               <h3 className="text-xl font-semibold text-cyan-300">
                 {item.position}
@@ -70,28 +70,28 @@ function TimelineItem({
             </div>
             {item.isActive && (
               <motion.div
-                className="bg-cyan-500 text-gray-900 px-2 py-1 rounded-full text-xs font-semibold flex items-center"
+                className="flex items-center rounded-full bg-cyan-500 px-2 py-1 text-xs font-semibold text-gray-900"
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{
                   duration: 2,
                   repeat: Infinity,
-                  ease: "easeInOut",
+                  ease: 'easeInOut',
                 }}
               >
-                <Activity className="w-3 h-3 mr-1" />
+                <Activity className="mr-1 h-3 w-3" />
                 Active
               </motion.div>
             )}
           </div>
-          <p className="text-cyan-100 mb-4">{item.description}</p>
+          <p className="mb-4 text-cyan-100">{item.description}</p>
           {item.technologies && (
-            <div className="flex flex-wrap gap-2 mb-4">
+            <div className="mb-4 flex flex-wrap gap-2">
               {item.technologies.map((tech, techIndex) => (
                 <span
                   key={techIndex}
-                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-900 text-cyan-300"
+                  className="inline-flex items-center rounded-full bg-cyan-900 px-2.5 py-0.5 text-xs font-medium text-cyan-300"
                 >
-                  <Code2 className="w-3 h-3 mr-1" />
+                  <Code2 className="mr-1 h-3 w-3" />
                   {tech}
                 </span>
               ))}
@@ -105,21 +105,21 @@ function TimelineItem({
               {item.projects.map((project, projectIndex) => (
                 <div
                   key={projectIndex}
-                  className="bg-gray-800 bg-opacity-50 p-4 rounded-lg"
+                  className="rounded-lg bg-gray-800 bg-opacity-50 p-4"
                 >
-                  <h5 className="text-md font-medium text-cyan-200 mb-2">
+                  <h5 className="text-md mb-2 font-medium text-cyan-200">
                     {project.name}
                   </h5>
-                  <p className="text-sm text-cyan-500 mb-2">{project.period}</p>
-                  <p className="text-cyan-100 mb-3">{project.description}</p>
+                  <p className="mb-2 text-sm text-cyan-500">{project.period}</p>
+                  <p className="mb-3 text-cyan-100">{project.description}</p>
                   {project.technologies && (
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-900 text-cyan-300"
+                          className="inline-flex items-center rounded-full bg-cyan-900 px-2.5 py-0.5 text-xs font-medium text-cyan-300"
                         >
-                          <Code2 className="w-3 h-3 mr-1" />
+                          <Code2 className="mr-1 h-3 w-3" />
                           {tech}
                         </span>
                       ))}
