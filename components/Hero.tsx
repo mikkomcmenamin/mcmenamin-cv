@@ -38,7 +38,6 @@ const ScrollIndicator = () => (
 const subtitles = [
   "full-stack software developer",
   "ux/ui designer",
-  "product engineer",
   "AI conjurer",
 ];
 
