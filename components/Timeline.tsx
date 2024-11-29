@@ -12,14 +12,14 @@ export default function Timeline() {
         <h2 className="text-2xl font-semibold text-cyan-300">
           Professional Experience
         </h2>
-        <div className="absolute right-0 top-8 flex items-center text-[10px] italic text-cyan-400/60">
-          <Info className="mr-1 h-2.5 w-2.5" />
+        <div className="absolute right-0 top-10 flex items-center text-[10px] italic text-cyan-400/60">
+          <Info className="mr-1 w-2.5" />
           <span>
             All disclosed companies and projects are listed with permission
           </span>
         </div>
       </div>
-      <div className="absolute bottom-0 left-4 top-[88px] w-0.5 bg-gradient-to-b from-cyan-400 to-blue-500" />
+      <div className="absolute bottom-0 left-1 top-[88px] w-0.5 bg-gradient-to-b from-cyan-400 to-blue-500" />
       {timelineItems.map((item, index) => (
         <TimelineItem
           key={index}
@@ -44,8 +44,8 @@ function TimelineItem({
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <div className="relative mb-12 ml-10" ref={ref}>
-      <div className="absolute -left-[32px] top-2 z-10 h-4 w-4 rounded-full border-2 border-cyan-400 bg-gray-900">
+    <div className="relative mb-12 ml-6" ref={ref}>
+      <div className="absolute -left-[27px] top-2 z-10 h-4 w-4 rounded-full border-2 border-cyan-400 bg-gray-900">
         <motion.div
           className="absolute h-full w-full rounded-full bg-cyan-400"
           animate={{ scale: [1, 1.2, 1] }}
@@ -59,7 +59,7 @@ function TimelineItem({
         }
         transition={{ duration: 0.5, delay: index * 0.1 }}
       >
-        <div className="rounded-lg border border-cyan-800 bg-gradient-to-r from-gray-900 to-gray-800 p-6 shadow-xl">
+        <div className="rounded-lg border border-cyan-800 bg-gradient-to-r from-gray-900 to-gray-800 p-5 shadow-xl">
           <div className="mb-4 flex items-start justify-between">
             <div>
               <h3 className="text-xl font-semibold text-cyan-300">

@@ -13,6 +13,7 @@ export interface Project {
   period: string;
   description: string;
   technologies: string[];
+  link?: string;
 }
 
 export const timelineItems: ITimelineItem[] = [
@@ -196,10 +197,9 @@ export const timelineItems: ITimelineItem[] = [
         name: 'Planmeca: Collaborative VR platform',
         period: '1/2018 – 3/2018',
         description:
-          "Collaborative multi-user environment for design validation in virtual reality. Wrote bachelor's thesis on the subject and project: \n " +
-          '' +
-          ' https://www.theseus.fi/handle/10024/148757',
+          "Collaborative multi-user environment for design validation in virtual reality. Wrote bachelor's thesis on the subject and project:",
         technologies: ['Unity', 'C#', 'Photon Bolt', 'Virtual Reality'],
+        link: "https://www.theseus.fi/handle/10024/148757"
       },
       {
         name: 'VR and AR Showcase Projects',
