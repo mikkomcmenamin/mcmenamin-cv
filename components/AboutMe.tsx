@@ -40,7 +40,7 @@ export default function AboutMe() {
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.6 + index * 0.1 }}
             >
-              <span className="text-cyan-100">{work.position} @</span>
+              <span className="text-cyan-100 text-sm sm:text-base">{work.position} @</span>
               <motion.span
                 className="font-semibold text-cyan-300"
                 animate={{ opacity: [1, 0.7, 1] }}
@@ -51,7 +51,7 @@ export default function AboutMe() {
                     href={work.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors hover:text-cyan-400"
+                    className="text-sm sm:text-base transition-colors hover:text-cyan-400"
                   >
                     {work.company}
                   </a>
