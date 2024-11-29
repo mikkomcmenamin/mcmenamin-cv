@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import {
   User,
   Briefcase,
@@ -11,6 +10,7 @@ import {
   Music,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { HoverScale } from './animations/HoverScale';
 
 interface INavItem {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,10 +32,7 @@ const navItems: INavItem[] = [
 export default function GlassmorphicNav() {
   const [activeSection, setActiveSection] = useState('');
 
-  const handleClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    sectionId: string
-  ) => {
+  const handleClick = (sectionId: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
@@ -68,10 +65,8 @@ export default function GlassmorphicNav() {
         window.scrollY + window.innerHeight > bottomOfPage - 100;
 
       if (nearBottom) {
-        // If we're near the bottom, activate the last section
         setActiveSection(navItems[navItems.length - 1].sectionId);
       } else {
-        // Normal scroll behavior
         for (const section of sections) {
           if (section && scrollPosition >= section.top) {
             setActiveSection(section.id);
@@ -81,7 +76,7 @@ export default function GlassmorphicNav() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Call once to set initial active section
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -91,34 +86,30 @@ export default function GlassmorphicNav() {
       <ul className="flex justify-around border-t border-cyan-400 border-opacity-20 bg-gray-900 bg-opacity-50 p-2 backdrop-blur-md md:block md:space-y-4 md:border-none md:p-0">
         {navItems.map(({ icon: Icon, label, sectionId }) => (
           <li key={sectionId} className="group md:relative md:mb-4">
-            <motion.div
-              className="absolute right-full top-[32%] mr-3 hidden origin-right -translate-y-1/2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 md:block"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-            >
+            <div className="absolute right-full top-[32%] mr-3 hidden origin-right -translate-y-1/2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 md:block">
               <span className="whitespace-nowrap text-cyan-300">{label}</span>
-            </motion.div>
-            <motion.a
+            </div>
+            <a
               href={`#${sectionId}`}
-              onClick={(e) => handleClick(e, sectionId)}
+              onClick={handleClick(sectionId)}
               className={`block rounded-full border border-cyan-400 p-3 shadow-lg backdrop-blur-md transition-all duration-300 
                 ${
                   activeSection === sectionId
                     ? 'border-opacity-50 bg-cyan-400 bg-opacity-25 shadow-cyan-400/20'
                     : 'border-opacity-20 bg-cyan-400 bg-opacity-10 hover:bg-opacity-20'
                 }`}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
             >
-              <Icon
-                className={`h-6 w-6 ${
-                  activeSection === sectionId
-                    ? 'text-cyan-100'
-                    : 'text-cyan-300'
-                }`}
-              />
-              <span className="sr-only">{label}</span>
-            </motion.a>
+              <HoverScale>
+                <Icon
+                  className={`h-6 w-6 ${
+                    activeSection === sectionId
+                      ? 'text-cyan-100'
+                      : 'text-cyan-300'
+                  }`}
+                />
+                <span className="sr-only">{label}</span>
+              </HoverScale>
+            </a>
           </li>
         ))}
       </ul>

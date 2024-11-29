@@ -1,16 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useTypingAnimation } from '@/lib/hooks/useTypingAnimation';
-
-const BlinkingCursor = () => (
-  <motion.span
-    className="ml-1 inline-block h-6 w-0.5 bg-cyan-300"
-    animate={{ opacity: [0, 1] }}
-    transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
-  />
-);
+import { FadeIn } from './animations/FadeIn';
+import { BlinkingCursor } from './animations/BlinkingCursor';
 
 interface AnimatedSubtitlesProps {
   subtitles: string[];
@@ -37,13 +30,7 @@ export default function AnimatedSubtitles({
   return (
     <div className="mb-8 flex h-24 flex-col items-center justify-center text-lg font-light uppercase tracking-wide text-cyan-300 sm:text-xl">
       {subtitles.map((subtitle, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          className="h-8 overflow-hidden"
-        >
+        <FadeIn key={index} delay={index * 0.1} className="h-8 overflow-hidden">
           {index === currentSubtitleIndex ? (
             <>
               {displayedText}
@@ -52,7 +39,7 @@ export default function AnimatedSubtitles({
           ) : index < currentSubtitleIndex ? (
             subtitle
           ) : null}
-        </motion.div>
+        </FadeIn>
       ))}
     </div>
   );

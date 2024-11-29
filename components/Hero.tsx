@@ -1,36 +1,22 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import AnimatedSubtitles from './AnimatedSubtitles';
 import BlackHole from './BlackHole';
 import SpaceBackground from './SpaceBackground';
+import { FadeIn } from './animations/FadeIn';
+import { FloatingAnimation } from './animations/FloatingAnimation';
+import { ScrollIndicator } from './animations/ScrollIndicator';
 
 const GradientBackground = () => (
   <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-75" />
 );
 
-const ScrollIndicator = () => (
-  <motion.div
-    className="absolute bottom-24 left-1/2 -translate-x-1/2 transform cursor-pointer"
-    initial={{ opacity: 0, y: -20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 0.6 }}
-    onClick={() => {
-      window.scrollTo({
-        top: window.innerHeight,
-        behavior: 'smooth',
-      });
-    }}
-  >
-    <motion.div
-      animate={{ y: [0, 10, 0] }}
-      transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-    >
-      <ChevronDown className="h-8 w-8 text-blue-400" />
-      <ChevronDown className="-mt-4 h-8 w-8 text-blue-400" />
-    </motion.div>
-  </motion.div>
+const ChevronIndicator = () => (
+  <ScrollIndicator className="absolute bottom-24 left-1/2 -translate-x-1/2 transform">
+    <ChevronDown className="h-8 w-8 text-blue-400" />
+    <ChevronDown className="-mt-4 h-8 w-8 text-blue-400" />
+  </ScrollIndicator>
 );
 
 const subtitles = [
@@ -44,39 +30,32 @@ export default function Hero() {
     <section className="relative flex h-screen w-full items-center justify-center overflow-hidden">
       <SpaceBackground />
       <GradientBackground />
-      <motion.div
+      <FadeIn
+        duration={0.5}
         className="absolute inset-0 flex items-center justify-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
       >
         <div className="max-h-3xl h-full w-full max-w-3xl">
           <BlackHole />
         </div>
-      </motion.div>
+      </FadeIn>
 
-      <motion.div
+      <FadeIn
+        duration={0.8}
+        y={20}
         className="relative z-20 max-w-5xl px-4 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
       >
-        <motion.h1
-          className="mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-4xl font-bold uppercase tracking-wider text-transparent sm:text-6xl"
-          animate={{ y: [0, -10, 0] }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          style={{ textShadow: '0 0 20px rgba(0, 255, 255, 0.5)' }}
-        >
-          Mikko McMenamin
-        </motion.h1>
+        <FloatingAnimation y={10} duration={8}>
+          <h1
+            className="mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-4xl font-bold uppercase tracking-wider text-transparent sm:text-6xl"
+            style={{ textShadow: '0 0 20px rgba(0, 255, 255, 0.5)' }}
+          >
+            Mikko McMenamin
+          </h1>
+        </FloatingAnimation>
         <AnimatedSubtitles subtitles={subtitles} />
-      </motion.div>
+      </FadeIn>
 
-      <ScrollIndicator />
+      <ChevronIndicator />
     </section>
   );
 }

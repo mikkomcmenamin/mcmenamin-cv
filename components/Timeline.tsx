@@ -1,9 +1,11 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Code2, Activity, Info } from 'lucide-react';
 import { ITimelineItem, timelineItems } from '@/lib/data/timelineData';
+import { ScrollReveal } from './animations/ScrollReveal';
+import { PulseScale } from './animations/PulseScale';
+//import { useInView } from 'framer-motion';
 
 export default function Timeline() {
   return (
@@ -41,96 +43,85 @@ function TimelineItem({
   isFirst: boolean;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
+  //const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <div className="relative mb-12 ml-6" ref={ref}>
       <div className="absolute -left-[27px] top-2 z-10 h-4 w-4 rounded-full border-2 border-cyan-400 bg-gray-900">
-        <motion.div
-          className="absolute h-full w-full rounded-full bg-cyan-400"
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        />
+        <PulseScale className="absolute h-full w-full">
+          <div className="h-full w-full rounded-full bg-cyan-400" />
+        </PulseScale>
       </div>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={
-          isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }
-        }
-        transition={{ duration: 0.5, delay: index * 0.1 }}
+      <ScrollReveal
+        delay={index * 0.1}
+        threshold={0.1}
+        className="rounded-lg border border-cyan-800 bg-gradient-to-r from-gray-900 to-gray-800 p-5 shadow-xl"
       >
-        <div className="rounded-lg border border-cyan-800 bg-gradient-to-r from-gray-900 to-gray-800 p-5 shadow-xl">
-          <div className="mb-4 flex items-start justify-between">
-            <div>
-              <h3 className="text-xl font-semibold text-cyan-300">
-                {item.position}
-              </h3>
-              <p className="text-cyan-400">{item.company}</p>
-              <p className="text-sm text-cyan-500">{item.period}</p>
-            </div>
-            {item.isActive && (
-              <motion.div
-                className="flex items-center rounded-full bg-cyan-500 px-2 py-1 text-xs font-semibold text-gray-900"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
+        <div className="mb-4 flex items-start justify-between">
+          <div>
+            <h3 className="text-xl font-semibold text-cyan-300">
+              {item.position}
+            </h3>
+            <p className="text-cyan-400">{item.company}</p>
+            <p className="text-sm text-cyan-500">{item.period}</p>
+          </div>
+          {item.isActive && (
+            <PulseScale
+              scale={1.05}
+              className="flex items-center rounded-full bg-cyan-500 px-2 py-1 text-xs font-semibold text-gray-900"
+            >
+              <div className="flex items-center">
                 <Activity className="mr-1 h-3 w-3" />
                 Active
-              </motion.div>
-            )}
-          </div>
-          <p className="mb-4 text-cyan-100">{item.description}</p>
-          {item.technologies && (
-            <div className="mb-4 flex flex-wrap gap-2">
-              {item.technologies.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="inline-flex items-center rounded-full bg-cyan-900 px-2.5 py-0.5 text-xs font-medium text-cyan-300"
-                >
-                  <Code2 className="mr-1 h-3 w-3" />
-                  {tech}
-                </span>
-              ))}
-            </div>
-          )}
-          {item.projects && (
-            <div className="space-y-4">
-              <h4 className="text-lg font-medium text-cyan-200">
-                Key Projects:
-              </h4>
-              {item.projects.map((project, projectIndex) => (
-                <div
-                  key={projectIndex}
-                  className="rounded-lg bg-gray-800 bg-opacity-50 p-4"
-                >
-                  <h5 className="text-md mb-2 font-medium text-cyan-200">
-                    {project.name}
-                  </h5>
-                  <p className="mb-2 text-sm text-cyan-500">{project.period}</p>
-                  <p className="mb-3 text-cyan-100">{project.description}</p>
-                  {project.technologies && (
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="inline-flex items-center rounded-full bg-cyan-900 px-2.5 py-0.5 text-xs font-medium text-cyan-300"
-                        >
-                          <Code2 className="mr-1 h-3 w-3" />
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+              </div>
+            </PulseScale>
           )}
         </div>
-      </motion.div>
+        <p className="mb-4 text-cyan-100">{item.description}</p>
+        {item.technologies && (
+          <div className="mb-4 flex flex-wrap gap-2">
+            {item.technologies.map((tech, techIndex) => (
+              <span
+                key={techIndex}
+                className="inline-flex items-center rounded-full bg-cyan-900 px-2.5 py-0.5 text-xs font-medium text-cyan-300"
+              >
+                <Code2 className="mr-1 h-3 w-3" />
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
+        {item.projects && (
+          <div className="space-y-4">
+            <h4 className="text-lg font-medium text-cyan-200">Key Projects:</h4>
+            {item.projects.map((project, projectIndex) => (
+              <div
+                key={projectIndex}
+                className="rounded-lg bg-gray-800 bg-opacity-50 p-4"
+              >
+                <h5 className="text-md mb-2 font-medium text-cyan-200">
+                  {project.name}
+                </h5>
+                <p className="mb-2 text-sm text-cyan-500">{project.period}</p>
+                <p className="mb-3 text-cyan-100">{project.description}</p>
+                {project.technologies && (
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="inline-flex items-center rounded-full bg-cyan-900 px-2.5 py-0.5 text-xs font-medium text-cyan-300"
+                      >
+                        <Code2 className="mr-1 h-3 w-3" />
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </ScrollReveal>
     </div>
   );
 }

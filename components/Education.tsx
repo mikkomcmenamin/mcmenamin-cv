@@ -1,8 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Award, BookOpen } from 'lucide-react';
 import { certifications, educationItems } from '@/lib/data/educationData';
+import { FadeIn } from './animations/FadeIn';
+import { ScaleIn } from './animations/ScaleIn';
 
 export default function Education() {
   return (
@@ -14,11 +15,9 @@ export default function Education() {
             Education
           </h3>
           {educationItems.map((item, index) => (
-            <motion.div
+            <FadeIn
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
+              delay={index * 0.2}
               className="mb-6 rounded-lg border border-cyan-800 bg-gradient-to-r from-gray-900 to-gray-800 p-6 shadow-xl"
             >
               <h4 className="text-lg font-semibold text-cyan-300">
@@ -26,7 +25,7 @@ export default function Education() {
               </h4>
               <p className="text-cyan-400">{item.school}</p>
               <p className="text-sm text-cyan-500">{item.year}</p>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
         <div>
@@ -36,18 +35,16 @@ export default function Education() {
           </h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {certifications.map((cert, index) => (
-              <motion.div
+              <ScaleIn
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                delay={index * 0.1}
                 className="rounded-lg border border-cyan-800 bg-gradient-to-r from-gray-900 to-gray-800 p-4 shadow-xl transition-colors duration-300 hover:border-cyan-600"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-cyan-300">{cert}</span>
                   <Award className="text-cyan-500" size={20} />
                 </div>
-              </motion.div>
+              </ScaleIn>
             ))}
           </div>
         </div>
