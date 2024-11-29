@@ -9,10 +9,12 @@ import DesignPortfolio from '../components/DesignPortfolio';
 import GlassmorphicNav from '../components/GlassmorphicNav';
 import MusicSection from '../components/MusicSection';
 import AboutMe from '../components/AboutMe';
+import LoadingOverlay from '../components/LoadingOverlay';
 
 export default function CVPage() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden pb-24">
+      <LoadingOverlay />
       <Hero />
       <GlassmorphicNav />
 
