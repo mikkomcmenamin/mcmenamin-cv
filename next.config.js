@@ -5,6 +5,7 @@ const nextConfig = {
       'source.unsplash.com',
       'images.example.com',
       'another-domain.com',
+      'img.youtube.com',
     ],
   },
 };

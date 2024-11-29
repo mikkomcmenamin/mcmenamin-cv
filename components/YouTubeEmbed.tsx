@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface YouTubeEmbedProps {
   videoId: string;
@@ -24,7 +25,9 @@ export default function YouTubeEmbed({ videoId, title }: YouTubeEmbedProps) {
         aria-label="Load video"
       >
         {/* Thumbnail */}
-        <img
+        <Image
+          width={800}
+          height={600}
           src={thumbnailUrl}
           alt={title}
           className="h-full w-full object-cover opacity-80 transition-opacity group-hover:opacity-100"
