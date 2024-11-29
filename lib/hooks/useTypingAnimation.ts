@@ -7,18 +7,24 @@ export function useTypingAnimation(text: string, speed: number = 50) {
   useEffect(() => {
     setDisplayedText('');
     setIsComplete(false);
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i < text.length) {
-        setDisplayedText(() => text.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(timer);
-        setIsComplete(true);
-      }
-    }, speed);
 
-    return () => clearInterval(timer);
+    // Add 1 second initial delay
+    const initialDelay = setTimeout(() => {
+      let i = 0;
+      const timer = setInterval(() => {
+        if (i < text.length) {
+          setDisplayedText(() => text.slice(0, i + 1));
+          i++;
+        } else {
+          clearInterval(timer);
+          setIsComplete(true);
+        }
+      }, speed);
+
+      return () => clearInterval(timer);
+    }, 1500);
+
+    return () => clearTimeout(initialDelay);
   }, [text, speed]);
 
   return { displayedText, isComplete };
