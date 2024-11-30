@@ -23,12 +23,7 @@ export default function Timeline() {
       </div>
       <div className="absolute bottom-0 left-1 top-[88px] w-0.5 bg-gradient-to-b from-cyan-400 to-blue-500" />
       {timelineItems.map((item, index) => (
-        <TimelineItem
-          key={index}
-          item={item}
-          index={index}
-          isFirst={index === 0}
-        />
+        <TimelineItem key={index} item={item} index={index} />
       ))}
     </section>
   );
@@ -37,20 +32,23 @@ export default function Timeline() {
 function TimelineItem({
   item,
   index,
-  isFirst,
+  breakpoint: propBreakpoint,
 }: {
   item: ITimelineItem;
   index: number;
-  isFirst: boolean;
+  breakpoint?: number;
 }) {
   const ref = useRef(null);
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const breakpoint = item.breakpoint ?? propBreakpoint ?? 3;
+
   const projectsToShow = item.projects
     ? isExpanded
       ? item.projects
-      : item.projects
+      : item.projects.slice(0, breakpoint)
     : [];
-  const hasMoreProjects = item.projects && item.projects.length >= 3;
+  const hasMoreProjects = item.projects && item.projects.length >= breakpoint;
 
   return (
     <div className="relative mb-12 ml-6" ref={ref}>
@@ -104,14 +102,16 @@ function TimelineItem({
             <div className="relative">
               <div
                 className={`space-y-4 transition-all duration-300 ease-in-out ${
-                  isExpanded ? '' : 'max-h-[700px] overflow-hidden'
+                  isExpanded ? '' : 'max-h-[800px] overflow-hidden'
                 }`}
               >
                 {projectsToShow.map((project, projectIndex) => (
                   <div
                     key={projectIndex}
                     className={`rounded-lg bg-gray-800 bg-opacity-50 p-4 ${
-                      !isExpanded && projectIndex === 2 ? 'opacity-90' : ''
+                      !isExpanded && projectIndex === breakpoint - 1
+                        ? 'opacity-90'
+                        : ''
                     }`}
                   >
                     <h5 className="text-md mb-2 font-medium text-cyan-200">
@@ -138,7 +138,7 @@ function TimelineItem({
                 ))}
                 {!isExpanded && hasMoreProjects && (
                   <div className="absolute bottom-0 left-0 right-0">
-                    <div className="relative h-80">
+                    <div className="relative h-96">
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/70 to-gray-900" />
                       <div className="absolute bottom-0 left-0 right-0">
                         <div className="h-16 rounded-lg bg-gray-800/30 p-4 blur-sm">

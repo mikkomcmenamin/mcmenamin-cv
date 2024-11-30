@@ -1,11 +1,12 @@
 export interface ITimelineItem {
-  company: string;
   position: string;
+  company: string;
   period: string;
   description?: string;
-  projects?: Project[];
   isActive?: boolean;
   technologies?: string[];
+  projects?: Project[];
+  breakpoint?: number;
 }
 
 export interface Project {
@@ -18,9 +19,11 @@ export interface Project {
 
 export const timelineItems: ITimelineItem[] = [
   {
-    company: 'Pareto Software Oy',
     position: 'Senior Software Developer & Partner',
+    company: 'Pareto Software Oy',
     period: '9/2023 - Present',
+    description:
+      'Leading frontend development in various client projects. Focusing on TypeScript, React, and modern web technologies.',
     projects: [
       {
         name: 'Undisclosed Client',
@@ -93,10 +96,11 @@ export const timelineItems: ITimelineItem[] = [
       },
     ],
     isActive: true,
+    breakpoint: 4,
   },
   {
-    company: 'Groke Technologies',
     position: 'Lead UI Software Developer & Shareholder',
+    company: 'Groke Technologies',
     period: '1/2021 – 9/2023',
     description:
       'Design and development of Groke Pro and Groke Fleet user interface applications from concept to launch, focusing on intuitive user experience and functional design. ' +
@@ -120,8 +124,8 @@ export const timelineItems: ITimelineItem[] = [
     ],
   },
   {
-    company: 'Insta Digital',
     position: 'XR Tech Lead',
+    company: 'Insta Digital',
     period: '11/2018 – 1/2021',
     description:
       'Lead developer on several virtual reality and augmented reality projects. Responsible for recruitment, staffing, internal development, and ' +
@@ -172,9 +176,12 @@ export const timelineItems: ITimelineItem[] = [
     ],
   },
   {
-    company: 'Intopalo',
     position: 'Software Developer',
+    company: 'Intopalo',
     period: '5/2017 – 11/2018',
+    breakpoint: 2,
+    description:
+      'Frontend development focusing on XR technologies. Worked on various virtual and augmented reality projects for industrial clients.',
     projects: [
       {
         name: 'Rolls Royce: Intelligent Awareness',
@@ -199,7 +206,7 @@ export const timelineItems: ITimelineItem[] = [
         description:
           "Collaborative multi-user environment for design validation in virtual reality. Wrote bachelor's thesis on the subject and project:",
         technologies: ['Unity', 'C#', 'Photon Bolt', 'Virtual Reality'],
-        link: "https://www.theseus.fi/handle/10024/148757"
+        link: 'https://www.theseus.fi/handle/10024/148757',
       },
       {
         name: 'VR and AR Showcase Projects',
@@ -224,13 +231,12 @@ export const timelineItems: ITimelineItem[] = [
     ],
   },
   {
-    company: 'Uula Color Oy',
     position: 'Project Manager',
+    company: 'Uula Color Oy',
     period: '10/2010 – 8/2015',
     description:
       'Expanded international business. Designed ERP migration process. Automated different sales and shipping mechanics. ' +
-      'Managed company ICT systems. Enhanced marketing efforts by increasing social media following. Designed a new website and implemented sales campaigns that ' +
-      'resulted in the best annual turnovers of company history. Initiated web store project.',
+      'Managed company ICT systems. Enhanced marketing efforts by increasing social media following. Designed a new website and initiated web store project.',
     technologies: [
       'Lemonsoft',
       'SAP',
