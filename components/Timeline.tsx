@@ -48,9 +48,9 @@ function TimelineItem({
   const projectsToShow = item.projects
     ? isExpanded
       ? item.projects
-      : item.projects.slice(0, 2)
+      : item.projects
     : [];
-  const hasMoreProjects = item.projects && item.projects.length > 2;
+  const hasMoreProjects = item.projects && item.projects.length >= 3;
 
   return (
     <div className="relative mb-12 ml-6" ref={ref}>
@@ -101,48 +101,69 @@ function TimelineItem({
         {item.projects && (
           <div className="space-y-4">
             <h4 className="text-lg font-medium text-cyan-200">Key Projects:</h4>
-            <div
-              className={`space-y-4 transition-all duration-300 ease-in-out ${isExpanded ? 'opacity-100' : 'opacity-100'}`}
-            >
-              {projectsToShow.map((project, projectIndex) => (
-                <div
-                  key={projectIndex}
-                  className="rounded-lg bg-gray-800 bg-opacity-50 p-4"
-                >
-                  <h5 className="text-md mb-2 font-medium text-cyan-200">
-                    {project.name}
-                  </h5>
-                  <p className="mb-2 text-sm text-cyan-500">{project.period}</p>
-                  <p className="mb-3 text-cyan-100">{project.description}</p>
-                  {project.technologies && (
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="inline-flex items-center rounded-full bg-cyan-900 px-2.5 py-0.5 text-xs font-medium text-cyan-300"
-                        >
-                          <Code2 className="mr-1 h-3 w-3" />
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-            {hasMoreProjects && (
-              <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-cyan-900/30 py-2 text-sm text-cyan-300 transition-all hover:bg-cyan-900/50"
+            <div className="relative">
+              <div
+                className={`space-y-4 transition-all duration-300 ease-in-out ${
+                  isExpanded ? '' : 'max-h-[700px] overflow-hidden'
+                }`}
               >
-                <span>{isExpanded ? 'Show Less' : 'See More'}</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-300 ${
-                    isExpanded ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-            )}
+                {projectsToShow.map((project, projectIndex) => (
+                  <div
+                    key={projectIndex}
+                    className={`rounded-lg bg-gray-800 bg-opacity-50 p-4 ${
+                      !isExpanded && projectIndex === 2 ? 'opacity-90' : ''
+                    }`}
+                  >
+                    <h5 className="text-md mb-2 font-medium text-cyan-200">
+                      {project.name}
+                    </h5>
+                    <p className="mb-2 text-sm text-cyan-500">
+                      {project.period}
+                    </p>
+                    <p className="mb-3 text-cyan-100">{project.description}</p>
+                    {project.technologies && (
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="inline-flex items-center rounded-full bg-cyan-900 px-2.5 py-0.5 text-xs font-medium text-cyan-300"
+                          >
+                            <Code2 className="mr-1 h-3 w-3" />
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+                {!isExpanded && hasMoreProjects && (
+                  <div className="absolute bottom-0 left-0 right-0">
+                    <div className="relative h-80">
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/70 to-gray-900" />
+                      <div className="absolute bottom-0 left-0 right-0">
+                        <div className="h-16 rounded-lg bg-gray-800/30 p-4 blur-sm">
+                          <div className="h-2 w-32 rounded bg-cyan-900/30" />
+                          <div className="mt-2 h-2 w-48 rounded bg-cyan-900/20" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              {hasMoreProjects && (
+                <button
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="relative mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-cyan-900/30 py-2 text-sm text-cyan-300 transition-all hover:bg-cyan-900/50"
+                >
+                  <span>{isExpanded ? 'Show Less' : 'See More'}</span>
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-300 ${
+                      isExpanded ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+              )}
+            </div>
           </div>
         )}
       </ScrollReveal>
