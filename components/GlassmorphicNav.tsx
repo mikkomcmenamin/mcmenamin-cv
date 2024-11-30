@@ -83,7 +83,7 @@ export default function GlassmorphicNav() {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 md:bottom-auto md:left-auto md:right-4 md:top-1/2 md:-translate-y-1/2 md:transform">
-      <ul className="flex justify-around border-t border-cyan-400 border-opacity-20 bg-gray-900 bg-opacity-50 pb-4 pt-2 backdrop-blur-md md:block md:space-y-4 md:border-none md:p-0">
+      <ul className="flex justify-around rounded-t-2xl border-t border-cyan-400 border-opacity-20 bg-gray-900 bg-opacity-50 pb-4 pt-3 backdrop-blur-md md:block md:space-y-4 md:rounded-none md:border-none md:p-0">
         {navItems.map(({ icon: Icon, label, sectionId }) => (
           <li key={sectionId} className="group md:relative md:mb-4">
             <div className="absolute right-full top-[32%] mr-3 hidden origin-right -translate-y-1/2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 md:block">
