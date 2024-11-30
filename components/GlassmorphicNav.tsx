@@ -92,23 +92,22 @@ export default function GlassmorphicNav() {
             <a
               href={`#${sectionId}`}
               onClick={handleClick(sectionId)}
-              className={`block rounded-full border border-cyan-400 p-3 shadow-lg backdrop-blur-md transition-all duration-300 
+              className={`block rounded-full border border-cyan-400 p-3 shadow-lg backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900
                 ${
                   activeSection === sectionId
                     ? 'border-opacity-50 bg-cyan-400 bg-opacity-25 shadow-cyan-400/20'
                     : 'border-opacity-20 bg-cyan-400 bg-opacity-10 hover:bg-opacity-20'
                 }`}
+              aria-label={label}
             >
-              <HoverScale>
-                <Icon
-                  className={`h-6 w-6 ${
-                    activeSection === sectionId
-                      ? 'text-cyan-100'
-                      : 'text-cyan-300'
-                  }`}
-                />
-                <span className="sr-only">{label}</span>
-              </HoverScale>
+              <Icon
+                className={`h-6 w-6 ${
+                  activeSection === sectionId
+                    ? 'text-cyan-100'
+                    : 'text-cyan-300'
+                }`}
+                aria-hidden="true"
+              />
             </a>
           </li>
         ))}

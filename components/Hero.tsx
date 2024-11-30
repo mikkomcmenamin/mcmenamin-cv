@@ -7,6 +7,7 @@ import SpaceBackground from './SpaceBackground';
 import { FadeIn } from './animations/FadeIn';
 import { FloatingAnimation } from './animations/FloatingAnimation';
 import { ScrollIndicator } from './animations/ScrollIndicator';
+import KeyboardGuide from './KeyboardGuide';
 
 const GradientBackground = () => (
   <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-75" />
@@ -30,6 +31,7 @@ export default function Hero() {
     <section className="relative flex h-screen w-full items-center justify-center overflow-hidden">
       <SpaceBackground />
       <GradientBackground />
+      <KeyboardGuide />
       <FadeIn
         duration={0.5}
         className="absolute inset-0 flex items-center justify-center"

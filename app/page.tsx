@@ -10,6 +10,7 @@ import GlassmorphicNav from '../components/GlassmorphicNav';
 import MusicSection from '../components/MusicSection';
 import AboutMe from '../components/AboutMe';
 import LoadingOverlay from '../components/LoadingOverlay';
+import KeyboardGuide from '../components/KeyboardGuide';
 
 export default function CVPage() {
   return (
@@ -17,6 +18,7 @@ export default function CVPage() {
       <LoadingOverlay />
       <Hero />
       <GlassmorphicNav />
+      <KeyboardGuide />
 
       <main className="mx-auto w-full max-w-4xl space-y-24 px-4 py-16">
         <AboutMe />
