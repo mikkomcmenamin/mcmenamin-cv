@@ -46,7 +46,7 @@ export default function Hero() {
       >
         <FloatingAnimation y={10} duration={8}>
           <h1
-            className="mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-4xl font-bold uppercase tracking-wider text-transparent sm:text-6xl"
+            className="mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-3xl font-bold uppercase tracking-wider text-transparent sm:text-4xl"
             style={{ textShadow: '0 0 20px rgba(0, 255, 255, 0.5)' }}
           >
             Mikko McMenamin

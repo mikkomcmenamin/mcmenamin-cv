@@ -11,7 +11,7 @@ interface AboutMeData {
 }
 
 export const aboutMeData: AboutMeData = {
-  title: 'Hey visitor!',
+  title: 'Hey, I\'m Mikko!',
   description:
     "Welcome to my homepage! I'm an experienced software developer with over 8 years of expertise building enterprise applications. " +
     "I have an eye for good design and user experience, and I've built apps for web, desktop, mobile, and XR platforms. " +
