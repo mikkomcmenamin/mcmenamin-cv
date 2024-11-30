@@ -36,7 +36,7 @@ export default function GlassmorphicNav() {
     e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 100;
+      const offset = window.innerWidth < 768 ? 20 : 100;
       const elementPosition =
         element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
