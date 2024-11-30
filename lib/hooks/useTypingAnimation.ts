@@ -22,7 +22,7 @@ export function useTypingAnimation(text: string, speed: number = 50) {
       }, speed);
 
       return () => clearInterval(timer);
-    }, 1500);
+    }, 500);
 
     return () => clearTimeout(initialDelay);
   }, [text, speed]);

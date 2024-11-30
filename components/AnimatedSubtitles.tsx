@@ -22,7 +22,7 @@ export default function AnimatedSubtitles({
     if (isComplete && currentSubtitleIndex < subtitles.length - 1) {
       const timer = setTimeout(() => {
         setCurrentSubtitleIndex((prevIndex) => prevIndex + 1);
-      }, 500); // Wait for 500ms before moving to the next subtitle
+      }, 700); // Wait for 500ms before moving to the next subtitle
       return () => clearTimeout(timer);
     }
   }, [isComplete, currentSubtitleIndex, subtitles.length]);

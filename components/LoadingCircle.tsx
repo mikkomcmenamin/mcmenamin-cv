@@ -4,7 +4,7 @@ export default function LoadingCircle() {
   return (
     <div className="flex h-full w-full items-center justify-center">
       <motion.div
-        className="h-[90vw] w-[90vw] rounded-full border-2 border-transparent md:h-[50vw] md:w-[50vw]"
+        className="h-[90vw] w-[90vw] rounded-full border-2 border-transparent md:h-[750px] md:w-[750px]"
         style={{
           borderRightColor: '#60A5FA', // blue-400
           borderTopColor: '#67E8F9', // cyan-300
