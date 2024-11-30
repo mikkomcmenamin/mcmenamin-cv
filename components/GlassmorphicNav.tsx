@@ -81,6 +81,44 @@ export default function GlassmorphicNav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const currentIndex = navItems.findIndex(
+        (item) => item.sectionId === activeSection
+      );
+      let nextIndex = currentIndex;
+
+      switch (e.key) {
+        case 'ArrowUp':
+        case 'ArrowLeft':
+          nextIndex = currentIndex > 0 ? currentIndex - 1 : navItems.length - 1;
+          break;
+        case 'ArrowDown':
+        case 'ArrowRight':
+          nextIndex = currentIndex < navItems.length - 1 ? currentIndex + 1 : 0;
+          break;
+        default:
+          return;
+      }
+
+      const nextSection = navItems[nextIndex].sectionId;
+      const element = document.getElementById(nextSection);
+
+      if (element) {
+        const offset = window.innerWidth < 768 ? 20 : 100;
+        const elementPosition =
+          element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: elementPosition - offset,
+          behavior: 'smooth',
+        });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeSection]);
+
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 md:bottom-auto md:left-auto md:right-4 md:top-1/2 md:-translate-y-1/2 md:transform">
       <ul className="flex justify-around rounded-t-2xl border-t border-cyan-400 border-opacity-20 bg-gray-900 bg-opacity-50 pb-4 pt-3 backdrop-blur-md md:block md:space-y-4 md:rounded-none md:border-none md:p-0">

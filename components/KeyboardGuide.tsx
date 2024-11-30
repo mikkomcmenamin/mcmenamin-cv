@@ -20,17 +20,29 @@ export default function KeyboardGuide() {
 
   return (
     <FadeIn duration={0.5} className="fixed bottom-8 left-8 z-[100]">
-      <p className="flex items-center gap-2 text-sm text-cyan-300">
-        Press
-        <kbd className="rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 font-mono text-xs">
-          Tab
-        </kbd>
-        and
-        <kbd className="rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 font-mono text-xs">
-          Enter
-        </kbd>
-        to navigate
-      </p>
+      <div className="space-y-2 text-sm text-cyan-300">
+        <p className="flex items-center gap-2">
+          Press
+          <kbd className="rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 font-mono text-xs">
+            Tab
+          </kbd>
+          and
+          <kbd className="rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 font-mono text-xs">
+            Enter
+          </kbd>
+          to navigate
+        </p>
+        <p className="flex items-center gap-2">
+          Or use
+          <kbd className="rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 font-mono text-xs">
+            ←
+          </kbd>
+          <kbd className="rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-1 font-mono text-xs">
+            →
+          </kbd>
+          arrows
+        </p>
+      </div>
     </FadeIn>
   );
 }
