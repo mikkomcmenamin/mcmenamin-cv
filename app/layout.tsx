@@ -1,6 +1,7 @@
 import './globals.css';
 import { Space_Grotesk } from 'next/font/google';
 import { Metadata } from 'next';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.className} overflow-x-hidden bg-gradient-to-b from-black from-5% via-gray-950 via-40% to-black text-white`}
       >
+        <ScrollToTop />
         {children}
       </body>
     </html>
