@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -9,34 +10,32 @@ const Contact = () => {
         <h2 className="mb-8 text-2xl font-semibold text-cyan-300">Contact</h2>
 
         <div className="space-y-4">
-
           <Link
-              href="https://linkedin.com/in/mikkomcmenamin"
-              className="group flex items-center transition-transform hover:translate-x-1"
+            href="https://linkedin.com/in/mikkomcmenamin"
+            className="group flex items-center transition-transform hover:translate-x-1"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <span className="mr-3 text-xl text-cyan-300">↗</span>
+            <ArrowUpRight className="mr-3 h-6 w-6 text-cyan-300" />
             <span className="text-xl text-cyan-100">Linkedin</span>
           </Link>
           <Link
             href="https://github.com/mikkomcmenamin"
             className="group flex items-center transition-transform hover:translate-x-1"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <span className="mr-3 text-xl text-cyan-300">↗</span>
+            <ArrowUpRight className="mr-3 h-6 w-6 text-cyan-300" />
             <span className="text-xl text-cyan-100">Github</span>
           </Link>
           <Link
             href="https://x.com/mikkocodes"
             className="group flex items-center transition-transform hover:translate-x-1"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <span className="mr-3 text-xl text-cyan-300">↗</span>
+            <ArrowUpRight className="mr-3 h-6 w-6 text-cyan-300" />
             <span className="text-xl text-cyan-100">X</span>
-          </Link>
-          <Link
-              href="mailto:mikko.mcmenamin@gmail.com"
-              className="group flex items-center transition-transform hover:translate-x-1"
-          >
-            <span className="mr-3 text-xl text-cyan-300">↗</span>
-            <span className="text-xl text-cyan-100">Email</span>
           </Link>
         </div>
       </div>

@@ -27,7 +27,6 @@ export const aboutMeData: AboutMeData = {
     {
       company: 'Pretty Okay Apps',
       position: 'Founder',
-      url: 'https://prettyokaystack.com',
     },
   ],
 };
