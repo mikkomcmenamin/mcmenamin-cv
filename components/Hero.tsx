@@ -44,7 +44,7 @@ export default function Hero() {
       <FadeIn
         duration={0.8}
         y={20}
-        className="relative z-20 max-w-5xl px-4 text-center"
+        className="relative z-20 mt-8 max-w-5xl px-4 text-center"
       >
         <FloatingAnimation y={10} duration={8}>
           <h1
