@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { FadeIn } from './animations/FadeIn';
-import { useIsMobile } from '@/hooks/useIsMobile';
+import { useIsMobile } from '@/lib/hooks/useIsMobile';
 
 export default function KeyboardGuide() {
   const [isVisible, setIsVisible] = useState(true);
