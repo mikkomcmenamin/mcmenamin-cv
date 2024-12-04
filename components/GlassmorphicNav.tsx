@@ -10,7 +10,6 @@ import {
   Music,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { HoverScale } from './animations/HoverScale';
 
 interface INavItem {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
