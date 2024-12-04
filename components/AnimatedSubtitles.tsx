@@ -22,7 +22,7 @@ export default function AnimatedSubtitles({
     if (isComplete && currentSubtitleIndex < subtitles.length - 1) {
       const timer = setTimeout(() => {
         setCurrentSubtitleIndex((prevIndex) => prevIndex + 1);
-      }, 700); // Wait for 500ms before moving to the next subtitle
+      }, 700);
       return () => clearTimeout(timer);
     }
   }, [isComplete, currentSubtitleIndex, subtitles.length]);
@@ -32,10 +32,14 @@ export default function AnimatedSubtitles({
       {subtitles.map((subtitle, index) => (
         <FadeIn key={index} delay={index * 0.1} className="h-8 overflow-hidden">
           {index === currentSubtitleIndex ? (
-            <>
+            <span className="inline-flex">
               {displayedText}
-              {!isComplete && <BlinkingCursor />}
-            </>
+              {!isComplete ? (
+                <BlinkingCursor />
+              ) : (
+                <span className="w-[0.1em]">&nbsp;</span>
+              )}
+            </span>
           ) : index < currentSubtitleIndex ? (
             subtitle
           ) : null}
