@@ -14,7 +14,7 @@ const GradientBackground = () => (
 );
 
 const ChevronIndicator = () => (
-  <ScrollIndicator className="absolute bottom-24 left-1/2 -translate-x-1/2 transform">
+  <ScrollIndicator className="absolute bottom-48 left-1/2 -translate-x-1/2 transform sm:bottom-24">
     <ChevronDown className="h-8 w-8 text-blue-400" />
     <ChevronDown className="-mt-4 h-8 w-8 text-blue-400" />
   </ScrollIndicator>
