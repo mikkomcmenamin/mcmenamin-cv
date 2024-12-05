@@ -26,7 +26,7 @@ const SpaceBackground = () => {
         Math.random(),
         Math.random(),
         Math.random(),
-        Math.random() * 0.5 + 0.5,
+        Math.random() * 0.3 + 0.7,
       ]);
     }
 
@@ -38,9 +38,9 @@ const SpaceBackground = () => {
 
       // Draw stars
       stars.forEach(([x, y, brightness, speed]) => {
-        const size = brightness * 2;
+        const size = brightness * 3;
         const yPos = (y + time * speed * 0.00002) % 1; // Update 1: Adjusted star movement speed
-        ctx.fillStyle = `rgba(255, 255, 255, ${brightness})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${brightness * 1.2})`;
         ctx.fillRect(x * canvas.width, yPos * canvas.height, size, size);
       });
 
