@@ -12,14 +12,6 @@ function BlackHoleObject() {
   const isMobile = useIsMobile();
 
   const blackHoleSize = isMobile ? 1.5 : 2.2;
-  const debris1Size = isMobile ? 0.15 : 0.2;
-  const debris2Size = isMobile ? 0.1 : 0.15;
-  const debris1Position = isMobile
-    ? ([-2, 1.2, -1] as const)
-    : ([-3, 1.7, -1] as const);
-  const debris2Position = isMobile
-    ? ([2.2, -0.9, -1] as const)
-    : ([3.3, -1.3, -1] as const);
 
   const blackHoleMaterial = useMemo(
     () =>
@@ -85,13 +77,13 @@ function BlackHoleObject() {
           
           float grid(vec2 uv, float size) {
             vec2 grid = fract(uv * size);
-            return (step(0.98, grid.x) + step(0.98, grid.y)) * 0.5;
+            return (step(0.985, grid.x) + step(0.985, grid.y)) * 0.5;
           }
           
           void main() {
             float buildDuration = 2.5;
-            float holdDuration = 0.5;
-            float fadeDuration = 1.5;
+            float holdDuration = 0.0;
+            float fadeDuration = 0.7;
             float totalDuration = buildDuration + holdDuration + fadeDuration;
             
             if(time < 0.0 || time > totalDuration) {
@@ -117,7 +109,7 @@ function BlackHoleObject() {
             edgeGlow = max(0.0, edgeGlow);
             
             vec3 gridColor = vec3(0.0, 0.8, 1.0);
-            gl_FragColor = vec4(gridColor, finalGrid * opacity * edgeGlow * 0.6);
+            gl_FragColor = vec4(gridColor, finalGrid * opacity * edgeGlow * 0.5);
           }
         `,
       }),
@@ -137,7 +129,7 @@ function BlackHoleObject() {
     );
     blackHoleMaterial.uniforms.time.value += delta;
 
-    if (state.clock.elapsedTime > 2.0) {
+    if (state.clock.elapsedTime > 0.4) {
       gridMaterial.uniforms.time.value += delta;
     }
   });
@@ -151,12 +143,6 @@ function BlackHoleObject() {
       </Sphere>
       <Sphere args={[gridSize, 64, 64]} position={[0, 0, 0]}>
         <primitive object={gridMaterial} attach="material" />
-      </Sphere>
-      <Sphere args={[debris1Size, 32, 32]} position={debris1Position}>
-        <meshBasicMaterial color="#1a1a1a" />
-      </Sphere>
-      <Sphere args={[debris2Size, 32, 32]} position={debris2Position}>
-        <meshBasicMaterial color="#1a1a1a" />
       </Sphere>
     </group>
   );
