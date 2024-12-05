@@ -8,9 +8,6 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Mikko McMenamin',
   description: 'Senior Software Developer',
-  icons: {
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
-  },
 };
 
 export default function RootLayout({
