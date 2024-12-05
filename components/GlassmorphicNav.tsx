@@ -137,7 +137,7 @@ export default function GlassmorphicNav() {
             <a
               href={`#${sectionId}`}
               onClick={handleClick(sectionId)}
-              className={`block rounded-full border border-cyan-400 p-3 shadow-lg backdrop-blur-md transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900
+              className={`block rounded-full border border-cyan-400 p-3 shadow-lg backdrop-blur-md transition-all duration-150
                 ${
                   activeSection === sectionId
                     ? 'border-opacity-50 bg-cyan-400 bg-opacity-25 shadow-cyan-400/20'
