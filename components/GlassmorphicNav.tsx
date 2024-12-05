@@ -28,6 +28,26 @@ const navItems: INavItem[] = [
   { icon: Mail, label: 'Contact', sectionId: 'contact' },
 ];
 
+const scrollToElement = (element: HTMLElement, duration: number = 25) => {
+  const offset = window.innerWidth < 768 ? 20 : 100;
+  const start = window.scrollY;
+  const target = element.getBoundingClientRect().top + window.scrollY - offset;
+  const startTime = performance.now();
+
+  function animate(currentTime: number) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    window.scrollTo(0, start + (target - start) * progress);
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  }
+
+  requestAnimationFrame(animate);
+};
+
 export default function GlassmorphicNav() {
   const [activeSection, setActiveSection] = useState('');
 
@@ -35,13 +55,7 @@ export default function GlassmorphicNav() {
     e.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = window.innerWidth < 768 ? 20 : 100;
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: 'smooth',
-      });
+      scrollToElement(element, 25);
     }
   };
 
@@ -104,13 +118,7 @@ export default function GlassmorphicNav() {
       const element = document.getElementById(nextSection);
 
       if (element) {
-        const offset = window.innerWidth < 768 ? 20 : 100;
-        const elementPosition =
-          element.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: elementPosition - offset,
-          behavior: 'smooth',
-        });
+        scrollToElement(element, 25);
       }
     };
 
@@ -123,13 +131,13 @@ export default function GlassmorphicNav() {
       <ul className="flex justify-around rounded-t-2xl border-t border-cyan-400 border-opacity-20 bg-gray-900 bg-opacity-50 pb-4 pt-3 backdrop-blur-md md:block md:space-y-4 md:rounded-none md:border-none md:p-0">
         {navItems.map(({ icon: Icon, label, sectionId }) => (
           <li key={sectionId} className="group md:relative md:mb-4">
-            <div className="absolute right-full top-[32%] mr-3 hidden origin-right -translate-y-1/2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 md:block">
+            <div className="absolute right-full top-[32%] mr-3 hidden origin-right -translate-y-1/2 opacity-0 transition-opacity duration-150 group-hover:opacity-100 md:block">
               <span className="whitespace-nowrap text-cyan-300">{label}</span>
             </div>
             <a
               href={`#${sectionId}`}
               onClick={handleClick(sectionId)}
-              className={`block rounded-full border border-cyan-400 p-3 shadow-lg backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900
+              className={`block rounded-full border border-cyan-400 p-3 shadow-lg backdrop-blur-md transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900
                 ${
                   activeSection === sectionId
                     ? 'border-opacity-50 bg-cyan-400 bg-opacity-25 shadow-cyan-400/20'
