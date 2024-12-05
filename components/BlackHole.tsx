@@ -60,6 +60,70 @@ function BlackHoleObject() {
     [isMobile]
   );
 
+  const gridMaterial = useMemo(
+    () =>
+      new THREE.ShaderMaterial({
+        uniforms: {
+          time: { value: 0 },
+          isMobile: { value: isMobile ? 1.0 : 0.0 },
+        },
+        transparent: true,
+        vertexShader: `
+          varying vec3 vPosition;
+          varying vec2 vUv;
+          void main() {
+            vPosition = position;
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          uniform float time;
+          uniform float isMobile;
+          varying vec3 vPosition;
+          varying vec2 vUv;
+          
+          float grid(vec2 uv, float size) {
+            vec2 grid = fract(uv * size);
+            return (step(0.98, grid.x) + step(0.98, grid.y)) * 0.5;
+          }
+          
+          void main() {
+            float buildDuration = 2.5;
+            float holdDuration = 0.5;
+            float fadeDuration = 1.5;
+            float totalDuration = buildDuration + holdDuration + fadeDuration;
+            
+            if(time < 0.0 || time > totalDuration) {
+              gl_FragColor = vec4(0.0);
+              return;
+            }
+            
+            float gridSize = isMobile > 0.5 ? 30.0 : 40.0;
+            float baseGrid = grid(vUv, gridSize);
+            float secondaryGrid = grid(vUv, gridSize * 0.5);
+            
+            float buildProgress = clamp(time / buildDuration, 0.0, 1.0);
+            float heightMask = 1.0 - smoothstep(buildProgress, buildProgress + 0.15, vUv.y);
+            
+            float opacity = 1.0;
+            if(time > (buildDuration + holdDuration)) {
+              float fadeProgress = (time - buildDuration - holdDuration) / fadeDuration;
+              opacity = 1.0 - smoothstep(0.0, 1.0, fadeProgress);
+            }
+            
+            float finalGrid = (baseGrid + secondaryGrid * 0.5) * heightMask;
+            float edgeGlow = 1.0 - length(vUv - 0.5) * 1.2;
+            edgeGlow = max(0.0, edgeGlow);
+            
+            vec3 gridColor = vec3(0.0, 0.8, 1.0);
+            gl_FragColor = vec4(gridColor, finalGrid * opacity * edgeGlow * 0.6);
+          }
+        `,
+      }),
+    [isMobile]
+  );
+
   useFrame((state, delta) => {
     ref.current.rotation.x = THREE.MathUtils.lerp(
       ref.current.rotation.x,
@@ -72,12 +136,21 @@ function BlackHoleObject() {
       0.1
     );
     blackHoleMaterial.uniforms.time.value += delta;
+
+    if (state.clock.elapsedTime > 2.0) {
+      gridMaterial.uniforms.time.value += delta;
+    }
   });
+
+  const gridSize = blackHoleSize * 1.01;
 
   return (
     <group ref={ref}>
       <Sphere args={[blackHoleSize, 64, 64]} position={[0, 0, 0]}>
         <primitive object={blackHoleMaterial} attach="material" />
+      </Sphere>
+      <Sphere args={[gridSize, 64, 64]} position={[0, 0, 0]}>
+        <primitive object={gridMaterial} attach="material" />
       </Sphere>
       <Sphere args={[debris1Size, 32, 32]} position={debris1Position}>
         <meshBasicMaterial color="#1a1a1a" />
