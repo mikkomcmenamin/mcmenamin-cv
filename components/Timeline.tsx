@@ -5,6 +5,7 @@ import { Code2, Activity, Info, ChevronDown } from 'lucide-react';
 import { ITimelineItem, timelineItems } from '@/lib/data/timelineData';
 import { ScrollReveal } from './animations/ScrollReveal';
 import { PulseScale } from './animations/PulseScale';
+import { CustomButton } from './ui/custom-button';
 //import { useInView } from 'framer-motion';
 
 export default function Timeline() {
@@ -151,17 +152,17 @@ function TimelineItem({
                 )}
               </div>
               {hasMoreProjects && (
-                <button
+                <CustomButton
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="relative mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-cyan-900/30 py-2 text-sm text-cyan-300 transition-all hover:bg-cyan-900/50"
+                  className="mt-2"
                 >
                   <span>{isExpanded ? 'Show Less' : 'See More'}</span>
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-300 ${
+                    className={`transition-transform duration-300 ${
                       isExpanded ? 'rotate-180' : ''
                     }`}
                   />
-                </button>
+                </CustomButton>
               )}
             </div>
           </div>

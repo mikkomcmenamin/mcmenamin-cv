@@ -59,5 +59,12 @@ const config: Config = {
     },
   },
   plugins: [require('tailwindcss-animate')],
+  safelist: [
+    'bg-cyan-900/30',
+    'text-cyan-300',
+    'hover:bg-cyan-900/50',
+    'hover:border-cyan-700/50',
+    'before:from-cyan-400/20',
+  ],
 };
 export default config;
