@@ -23,7 +23,6 @@ const ChevronIndicator = () => (
 const subtitles = [
   'full-stack software developer',
   'ux/ui designer',
-  'AI conjurer',
 ];
 
 export default function Hero() {
