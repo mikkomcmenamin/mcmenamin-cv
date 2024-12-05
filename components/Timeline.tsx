@@ -140,7 +140,7 @@ function TimelineItem({
                 {!isExpanded && hasMoreProjects && (
                   <div className="absolute bottom-0 left-0 right-0">
                     <div className="relative h-96">
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/70 to-gray-900" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/70 to-gray-900 rounded-md" />
                       <div className="absolute bottom-0 left-0 right-0">
                         <div className="h-16 rounded-lg bg-gray-800/30 p-4 blur-sm">
                           <div className="h-2 w-32 rounded bg-cyan-900/30" />
