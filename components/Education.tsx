@@ -1,6 +1,6 @@
 'use client';
 
-import { Award, BookOpen } from 'lucide-react';
+import {Award, GraduationCap} from 'lucide-react';
 import { certifications, educationItems } from '@/lib/data/educationData';
 import { FadeIn } from './animations/FadeIn';
 import { ScaleIn } from './animations/ScaleIn';
@@ -11,7 +11,7 @@ export default function Education() {
       <div className="space-y-8">
         <div>
           <h3 className="mb-4 flex items-center text-xl font-semibold text-cyan-200">
-            <BookOpen className="mr-2" />
+            <GraduationCap className="mr-2" />
             Education
           </h3>
           {educationItems.map((item, index) => (

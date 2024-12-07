@@ -2,7 +2,7 @@ import './globals.css';
 import { Space_Grotesk } from 'next/font/google';
 import { Metadata } from 'next';
 import ScrollToTop from '@/components/ScrollToTop';
-import {TailwindIndicator} from "@/components/tailwind-indicator";
+import {TailwindIndicator} from "@/components/TailwindIndicator";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
