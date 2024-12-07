@@ -2,6 +2,7 @@ import './globals.css';
 import { Space_Grotesk } from 'next/font/google';
 import { Metadata } from 'next';
 import ScrollToTop from '@/components/ScrollToTop';
+import {TailwindIndicator} from "@/components/tailwind-indicator";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       >
         <ScrollToTop />
         {children}
+        <TailwindIndicator />
       </body>
     </html>
   );

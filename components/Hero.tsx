@@ -19,10 +19,7 @@ const ChevronIndicator = () => (
   </ScrollIndicator>
 );
 
-const subtitles = [
-  'full-stack software developer',
-  'ux/ui designer',
-];
+const subtitles = ['full-stack software developer', 'ux/ui designer'];
 
 export default function Hero() {
   return (
@@ -44,16 +41,16 @@ export default function Hero() {
         y={20}
         className="relative z-20 mt-8 max-w-5xl px-4 text-center"
       >
-          <h1
-              className="mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-3xl font-bold uppercase tracking-wider text-transparent sm:text-4xl"
-              style={{textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'}}
-          >
-              Mikko McMenamin
-          </h1>
-          <AnimatedSubtitles subtitles={subtitles}/>
+        <h1
+          className="mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-3xl font-bold uppercase tracking-wider text-transparent sm:text-4xl"
+          style={{ textShadow: '0 0 20px rgba(0, 255, 255, 0.5)' }}
+        >
+          Mikko McMenamin
+        </h1>
+        <AnimatedSubtitles subtitles={subtitles} />
       </FadeIn>
 
-        <ChevronIndicator/>
+      <ChevronIndicator />
     </section>
   );
 }
