@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useMemo } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame, useThree, RootState } from '@react-three/fiber';
 import { Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 import { useIsMobile } from '@/lib/hooks/useIsMobile';
@@ -118,15 +118,15 @@ function BlackHoleObject() {
     [isMobile]
   );
 
-  useFrame((state, delta) => {
+  useFrame((state: RootState, delta: number) => {
     ref.current.rotation.x = THREE.MathUtils.lerp(
       ref.current.rotation.x,
-        pointer.y * (Math.PI / 16),
+      pointer.y * (Math.PI / 16),
       0.1
     );
     ref.current.rotation.y = THREE.MathUtils.lerp(
       ref.current.rotation.y,
-        pointer.x * (Math.PI / 8),
+      pointer.x * (Math.PI / 8),
       0.1
     );
     blackHoleMaterial.uniforms.time.value += delta;
