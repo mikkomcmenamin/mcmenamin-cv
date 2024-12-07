@@ -1,7 +1,8 @@
 'use client';
 
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { X, Code2 } from 'lucide-react';
 import {
   IPortfolioItem,
@@ -9,10 +10,76 @@ import {
   portfolioItems,
 } from '@/lib/data/portfolioData';
 import { FadeIn } from './animations/FadeIn';
-import { ScaleIn } from './animations/ScaleIn';
+
+interface ExpandedViewProps {
+  item: IPortfolioItem;
+  onClose: () => void;
+  layoutId: string;
+}
+
+const ExpandedView = ({ item, onClose, layoutId }: ExpandedViewProps) => {
+  return (
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      <motion.div
+        layoutId={layoutId}
+        className="w-full max-w-3xl rounded-lg bg-gray-900 px-3 py-4 sm:p-6"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="mb-4 flex items-start justify-between">
+          <motion.h3
+            layoutId={`title-${layoutId}`}
+            className="text-2xl font-semibold text-cyan-300"
+          >
+            {item.title}
+          </motion.h3>
+          <button
+            onClick={onClose}
+            className="text-gray-400 transition-colors hover:text-white"
+          >
+            <X className="h-6 w-6" />
+          </button>
+        </div>
+        <motion.div layoutId={`image-${layoutId}`} className="relative">
+          <Image
+            src={item.image}
+            alt={item.title}
+            width={600}
+            height={400}
+            className="h-auto w-full rounded-lg"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          <p className="mb-4 mt-4 text-cyan-100">{item.description}</p>
+          <div className="flex flex-wrap gap-2">
+            {item.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="inline-flex items-center rounded-full bg-cyan-900 px-2 py-1 text-sm text-cyan-300"
+              >
+                <Code2 className="mr-1 h-3 w-3" />
+                {tag}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+};
 
 export default function DesignPortfolio() {
   const [selectedItem, setSelectedItem] = useState<IPortfolioItem | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   return (
     <section className="mt-16" id="portfolio">
@@ -24,75 +91,51 @@ export default function DesignPortfolio() {
       </p>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {portfolioItems.map((item, index) => (
-          <div
+          <motion.div
             key={index}
+            layoutId={`card-${index}`}
             className="group relative cursor-pointer overflow-hidden rounded-lg"
-            onClick={() => setSelectedItem(item)}
+            onClick={() => {
+              setSelectedItem(item);
+              setSelectedId(`card-${index}`);
+            }}
           >
             <FadeIn delay={index * 0.1}>
-              <Image
-                src={item.image}
-                alt={item.title}
-                width={600}
-                height={400}
-                className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
+              <motion.div layoutId={`image-card-${index}`} className="relative">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={600}
+                  height={400}
+                  className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </motion.div>
               <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black via-black/60 to-black/30 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <h3 className="mb-2 text-xl font-semibold text-white">
+                <motion.h3
+                  layoutId={`title-card-${index}`}
+                  className="mb-2 text-xl font-semibold text-white"
+                >
                   {item.title}
-                </h3>
+                </motion.h3>
                 <p className="text-sm text-cyan-300">{item.description}</p>
               </div>
             </FadeIn>
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      {selectedItem && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4"
-          onClick={() => setSelectedItem(null)}
-        >
-          <FadeIn duration={0.3}>
-            <ScaleIn
-              duration={0.4}
-              className="w-full max-w-3xl rounded-lg bg-gray-900 p-6"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="mb-4 flex items-start justify-between">
-                <h3 className="text-2xl font-semibold text-cyan-300">
-                  {selectedItem.title}
-                </h3>
-                <button
-                  onClick={() => setSelectedItem(null)}
-                  className="text-gray-400 transition-colors hover:text-white"
-                >
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
-              <Image
-                src={selectedItem.image}
-                alt={selectedItem.title}
-                width={600}
-                height={400}
-                className="mb-4 h-auto w-full rounded-lg"
-              />
-              <p className="mb-4 text-cyan-100">{selectedItem.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {selectedItem.tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="inline-flex items-center rounded-full bg-cyan-900 px-2 py-1 text-sm text-cyan-300"
-                  >
-                    <Code2 className="mr-1 h-3 w-3" />
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </ScaleIn>
-          </FadeIn>
-        </div>
-      )}
+      <AnimatePresence>
+        {selectedItem && selectedId && (
+          <ExpandedView
+            item={selectedItem}
+            layoutId={selectedId}
+            onClose={() => {
+              setSelectedItem(null);
+              setSelectedId(null);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
