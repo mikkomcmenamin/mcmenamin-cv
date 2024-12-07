@@ -1,16 +1,16 @@
 'use client';
 
-import Hero from '../components/Hero';
-import Timeline from '../components/Timeline';
-import Skills from '../components/Skills';
-import Education from '../components/Education';
-import Contact from '../components/Contact';
-import DesignPortfolio from '../components/DesignPortfolio';
-import GlassmorphicNav from '../components/GlassmorphicNav';
-import MusicSection from '../components/MusicSection';
-import AboutMe from '../components/AboutMe';
-import LoadingOverlay from '../components/LoadingOverlay';
-import KeyboardGuide from '../components/KeyboardGuide';
+import Hero from '../../components/Hero';
+import Timeline from '../../components/Timeline';
+import Skills from '../../components/Skills';
+import Education from '../../components/Education';
+import Contact from '../../components/Contact';
+import DesignPortfolio from '../../components/DesignPortfolio';
+import GlassmorphicNav from '../../components/GlassmorphicNav';
+import MusicSection from '../../components/MusicSection';
+import AboutMe from '../../components/AboutMe';
+import LoadingOverlay from '../../components/LoadingOverlay';
+import KeyboardGuide from '../../components/KeyboardGuide';
 
 export default function CVPage() {
   return (
