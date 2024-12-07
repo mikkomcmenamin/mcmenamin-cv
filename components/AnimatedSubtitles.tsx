@@ -28,7 +28,7 @@ export default function AnimatedSubtitles({
   }, [isComplete, currentSubtitleIndex, subtitles.length]);
 
   return (
-    <div className="mb-8 flex h-24 flex-col items-center justify-center text-lg font-light uppercase tracking-wide text-cyan-300 sm:text-xl">
+    <div className="mb-4 flex h-24 flex-col items-center justify-center text-lg font-light uppercase tracking-wide text-cyan-300 sm:text-xl">
       {subtitles.map((subtitle, index) => (
         <FadeIn key={index} delay={index * 0.1} className="h-8 overflow-hidden">
           {index === currentSubtitleIndex ? (

@@ -35,7 +35,7 @@ export default function Hero() {
         duration={0.5}
         className="absolute inset-0 flex items-center justify-center"
       >
-        <div className="max-h-3xl h-full w-full max-w-3xl">
+        <div className="h-full w-full">
           <BlackHole />
         </div>
       </FadeIn>
@@ -45,18 +45,16 @@ export default function Hero() {
         y={20}
         className="relative z-20 mt-8 max-w-5xl px-4 text-center"
       >
-        <FloatingAnimation y={10} duration={8}>
           <h1
-            className="mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-3xl font-bold uppercase tracking-wider text-transparent sm:text-4xl"
-            style={{ textShadow: '0 0 20px rgba(0, 255, 255, 0.5)' }}
+              className="mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-3xl font-bold uppercase tracking-wider text-transparent sm:text-4xl"
+              style={{textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'}}
           >
-            Mikko McMenamin
+              Mikko McMenamin
           </h1>
-        </FloatingAnimation>
-        <AnimatedSubtitles subtitles={subtitles} />
+          <AnimatedSubtitles subtitles={subtitles}/>
       </FadeIn>
 
-      <ChevronIndicator />
+        <ChevronIndicator/>
     </section>
   );
 }

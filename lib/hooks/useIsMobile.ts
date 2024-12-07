@@ -3,11 +3,9 @@
 import { useState, useEffect } from 'react';
 
 export function useIsMobile() {
-  // Default to false - assume desktop
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
-    // This only runs in the browser after hydration
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };

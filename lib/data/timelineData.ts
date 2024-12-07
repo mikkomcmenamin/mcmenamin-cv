@@ -99,7 +99,7 @@ export const timelineItems: ITimelineItem[] = [
     breakpoint: 4,
   },
   {
-    position: 'Lead UI Software Developer & Shareholder',
+    position: 'Lead UI Software Developer',
     company: 'Groke Technologies',
     period: '1/2021 – 9/2023',
     description:

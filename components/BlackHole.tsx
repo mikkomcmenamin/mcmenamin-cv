@@ -8,10 +8,12 @@ import { useIsMobile } from '@/lib/hooks/useIsMobile';
 
 function BlackHoleObject() {
   const ref = useRef<THREE.Group>(null!);
-  const { mouse } = useThree();
+  const { pointer, viewport } = useThree();
   const isMobile = useIsMobile();
 
-  const blackHoleSize = isMobile ? 1.5 : 2.2;
+  const mobileSize = viewport.width * 0.5;
+  const desktopSize = 1.9;
+  const blackHoleSize = isMobile ? mobileSize : desktopSize;
 
   const blackHoleMaterial = useMemo(
     () =>
@@ -119,12 +121,12 @@ function BlackHoleObject() {
   useFrame((state, delta) => {
     ref.current.rotation.x = THREE.MathUtils.lerp(
       ref.current.rotation.x,
-      mouse.y * (Math.PI / 16),
+        pointer.y * (Math.PI / 16),
       0.1
     );
     ref.current.rotation.y = THREE.MathUtils.lerp(
       ref.current.rotation.y,
-      mouse.x * (Math.PI / 8),
+        pointer.x * (Math.PI / 8),
       0.1
     );
     blackHoleMaterial.uniforms.time.value += delta;
@@ -153,7 +155,13 @@ export default function BlackHole() {
 
   return (
     <div className="absolute inset-0">
-      <Canvas camera={{ position: [0, 0, isMobile ? 4.5 : 6], fov: 50 }}>
+      <Canvas
+        camera={{
+          position: [0, 0, isMobile ? 4 : 6],
+          fov: isMobile ? 75 : 50,
+        }}
+        dpr={[1, 2]} // Limit pixel ratio for better performance
+      >
         <ambientLight intensity={0.1} />
         <pointLight position={[10, 10, 10]} intensity={0.5} />
         <BlackHoleObject />
