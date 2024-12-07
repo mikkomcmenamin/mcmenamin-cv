@@ -1,12 +1,12 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { Code2, Activity, Info, ChevronDown } from 'lucide-react';
+import { Activity, Info, ChevronDown } from 'lucide-react';
 import { ITimelineItem, timelineItems } from '@/lib/data/timelineData';
 import { ScrollReveal } from './animations/ScrollReveal';
 import { PulseScale } from './animations/PulseScale';
 import { CustomButton } from './ui/custom-button';
-//import { useInView } from 'framer-motion';
+import { TechTag } from './ui/TechTag';
 
 export default function Timeline() {
   return (
@@ -87,13 +87,7 @@ function TimelineItem({
         {item.technologies && (
           <div className="mb-4 flex flex-wrap gap-2">
             {item.technologies.map((tech, techIndex) => (
-              <span
-                key={techIndex}
-                className="inline-flex items-center rounded-full bg-cyan-900 px-2.5 py-0.5 text-xs font-medium text-cyan-300"
-              >
-                <Code2 className="mr-1 h-3 w-3" />
-                {tech}
-              </span>
+              <TechTag key={techIndex} name={tech} />
             ))}
           </div>
         )}
@@ -125,13 +119,7 @@ function TimelineItem({
                     {project.technologies && (
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="inline-flex items-center rounded-full bg-cyan-900 px-2.5 py-0.5 text-xs font-medium text-cyan-300"
-                          >
-                            <Code2 className="mr-1 h-3 w-3" />
-                            {tech}
-                          </span>
+                          <TechTag key={techIndex} name={tech} />
                         ))}
                       </div>
                     )}
@@ -140,7 +128,7 @@ function TimelineItem({
                 {!isExpanded && hasMoreProjects && (
                   <div className="absolute bottom-0 left-0 right-0">
                     <div className="relative h-96">
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/70 to-gray-900 rounded-md" />
+                      <div className="absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-gray-900/70 to-gray-900" />
                       <div className="absolute bottom-0 left-0 right-0">
                         <div className="h-16 rounded-lg bg-gray-800/30 p-4 blur-sm">
                           <div className="h-2 w-32 rounded bg-cyan-900/30" />

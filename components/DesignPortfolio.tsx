@@ -3,13 +3,14 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useRef } from 'react';
-import { X, Code2 } from 'lucide-react';
+import { X } from 'lucide-react';
 import {
   IPortfolioItem,
   portfolioDescription,
   portfolioItems,
 } from '@/lib/data/portfolioData';
 import { FadeIn } from './animations/FadeIn';
+import { TechTag } from './ui/TechTag';
 
 interface ExpandedViewProps {
   item: IPortfolioItem;
@@ -62,13 +63,7 @@ const ExpandedView = ({ item, onClose, layoutId }: ExpandedViewProps) => {
           <p className="mb-4 mt-4 text-cyan-100">{item.description}</p>
           <div className="flex flex-wrap gap-2">
             {item.tags.map((tag, index) => (
-              <span
-                key={index}
-                className="inline-flex items-center rounded-full bg-cyan-900 px-2 py-1 text-sm text-cyan-300"
-              >
-                <Code2 className="mr-1 h-3 w-3" />
-                {tag}
-              </span>
+              <TechTag key={index} name={tag} />
             ))}
           </div>
         </motion.div>
