@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { X } from 'lucide-react';
 import {
   IPortfolioItem,
