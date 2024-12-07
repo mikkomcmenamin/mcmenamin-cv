@@ -40,7 +40,7 @@ const ExpandedView = ({ item, onClose, layoutId }: ExpandedViewProps) => {
           </motion.h3>
           <button
             onClick={onClose}
-            className="text-gray-400 transition-colors hover:text-white"
+            className="text-gray-400 transition-colors hover:text-[#ff0044] hover:shadow-[0_0_15px_rgba(255,0,68,0.5)]"
           >
             <X className="h-6 w-6" />
           </button>
