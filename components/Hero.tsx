@@ -22,7 +22,7 @@ const ChevronIndicator = () => (
 const subtitles = ['full-stack software developer', 'ux/ui designer'];
 
 const MainContent = () => (
-  <div className="absolute inset-0 mt-[35vh] flex items-start justify-center sm:mt-0 sm:items-center">
+  <div className="absolute inset-0 mt-[28vh] flex items-start justify-center sm:mt-12 sm:items-center">
     <FadeIn
       duration={0.8}
       y={20}
