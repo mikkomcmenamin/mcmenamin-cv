@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 const SpaceBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -33,34 +34,14 @@ const SpaceBackground = () => {
     let animationFrameId: number;
 
     const draw = (time: number) => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw stars
       stars.forEach(([x, y, brightness, speed]) => {
-        const size = brightness * 3;
-        const yPos = (y + time * speed * 0.00002) % 1; // Update 1: Adjusted star movement speed
-        ctx.fillStyle = `rgba(255, 255, 255, ${brightness * 1.2})`;
+        const size = brightness * 2;
+        const yPos = (y + time * speed * 0.00002) % 1;
+        ctx.fillStyle = `rgba(255, 255, 255, ${brightness * 0.8})`;
         ctx.fillRect(x * canvas.width, yPos * canvas.height, size, size);
       });
-
-      // Draw nebula
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2,
-        canvas.height / 2,
-        0,
-        canvas.width / 2,
-        canvas.height / 2,
-        canvas.width / 2
-      );
-      gradient.addColorStop(0, 'rgba(25, 25, 112, 0)');
-      gradient.addColorStop(
-        0.5,
-        `rgba(72, 61, 139, ${0.1 + Math.sin(time * 0.0002) * 0.05})`
-      ); // Update 2: Slowed down nebula pulsation
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       animationFrameId = requestAnimationFrame(draw);
     };
@@ -73,7 +54,21 @@ const SpaceBackground = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0" />;
+  return (
+    <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src="/space.png"
+          alt="Space background"
+          fill
+          priority
+          className="object-cover opacity-80"
+          quality={90}
+        />
+      </div>
+      <canvas ref={canvasRef} className="absolute inset-0 z-[1] opacity-60" />
+    </div>
+  );
 };
 
 export default SpaceBackground;
