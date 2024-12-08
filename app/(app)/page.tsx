@@ -1,5 +1,4 @@
-'use client';
-
+import { Suspense } from 'react';
 import Hero from '../../components/Hero';
 import Timeline from '../../components/Timeline';
 import Skills from '../../components/Skills';
@@ -16,7 +15,7 @@ export default function CVPage() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden pb-24">
       <LoadingOverlay />
-      <Hero />
+        <Hero />
       <GlassmorphicNav />
       <KeyboardGuide />
 

@@ -22,7 +22,7 @@ export default function LoadingOverlay() {
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
           className="fixed inset-0 z-50 -mt-36 flex items-start justify-center bg-black sm:mt-0 sm:items-center"
         >
           <LoadingCircle />

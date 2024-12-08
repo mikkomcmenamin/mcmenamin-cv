@@ -1,12 +1,14 @@
 'use client';
 
+import { Suspense, lazy } from 'react';
 import { ChevronDown } from 'lucide-react';
 import AnimatedSubtitles from './AnimatedSubtitles';
-import BlackHole from './BlackHole';
 import SpaceBackground from './SpaceBackground';
 import { FadeIn } from './animations/FadeIn';
 import { ScrollIndicator } from './animations/ScrollIndicator';
 import KeyboardGuide from './KeyboardGuide';
+
+const BlackHole = lazy(() => import('./BlackHole'));
 
 const GradientBackground = () => (
   <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-75" />
@@ -31,7 +33,9 @@ export default function Hero() {
         <div className="relative h-full w-full">
           <FadeIn duration={0.5} className="h-full">
             <div className="relative h-full w-full -translate-y-24 sm:translate-y-0">
-              <BlackHole />
+              <Suspense fallback={null}>
+                <BlackHole />
+              </Suspense>
             </div>
           </FadeIn>
 
