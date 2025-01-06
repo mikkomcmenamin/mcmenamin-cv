@@ -12,7 +12,7 @@ export interface ITimelineItem {
 export interface Project {
   name: string;
   period: string;
-  description: string;
+  description?: string;
   technologies: string[];
   link?: string;
 }
@@ -28,8 +28,6 @@ export const timelineItems: ITimelineItem[] = [
       {
         name: 'Undisclosed Client',
         period: '11/2024 – ',
-        description:
-          'Converting a large codebase from Javascript to Typescript.',
         technologies: ['TypeScript', 'JavaScript', 'React', 'Node.js'],
       },
       {
