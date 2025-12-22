@@ -19,7 +19,7 @@ const ChevronIndicator = () => (
   </ScrollIndicator>
 );
 
-const subtitles = ['full-stack software developer', 'ux/ui designer'];
+const subtitles = ['full-stack software developer', 'ux/ui designer', 'ai engineer'];
 
 const MainContent = () => (
   <div className="absolute inset-0 mt-[28vh] flex items-start justify-center sm:mt-12 sm:items-center">

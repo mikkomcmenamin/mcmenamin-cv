@@ -20,9 +20,9 @@ interface INavItem {
 
 const navItems: INavItem[] = [
   { icon: User, label: 'About', sectionId: 'about' },
+  { icon: Palette, label: 'Pretty Okay Apps', sectionId: 'portfolio' },
   { icon: Briefcase, label: 'Experience', sectionId: 'experience' },
   { icon: Code, label: 'Skills', sectionId: 'skills' },
-  { icon: Palette, label: 'Portfolio', sectionId: 'portfolio' },
   { icon: GraduationCap, label: 'Education', sectionId: 'education' },
   { icon: Music, label: 'Music', sectionId: 'music' },
   { icon: Mail, label: 'Contact', sectionId: 'contact' },
