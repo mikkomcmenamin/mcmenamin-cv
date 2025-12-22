@@ -21,16 +21,16 @@ export default function CVPage() {
       <main className="mx-auto w-full max-w-4xl space-y-24 px-4 py-16">
         <AboutMe />
 
+        <section id="portfolio">
+          <DesignPortfolio />
+        </section>
+
         <section id="experience">
           <Timeline />
         </section>
 
         <section id="skills">
           <Skills />
-        </section>
-
-        <section id="portfolio">
-          <DesignPortfolio />
         </section>
 
         <section id="education">
