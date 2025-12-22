@@ -6,16 +6,15 @@ export interface IPortfolioItem {
 }
 
 export const portfolioDescription =
-  "Pretty Okay Apps is my sidehustle and I'm currently working on building a portfolio of useful " +
-  'apps and tools for consumers and developers.';
+  "Pretty Okay Apps is my sidehustle and I'm currently working on building SmartReps, an AI-powered workout app.";
 
 export const portfolioItems: IPortfolioItem[] = [
   {
-    title: 'Pretty Okay Stack [WIP]',
+    title: 'SmartReps',
     description:
-      'Production-ready SaaS template with Next.js, Fastify, Postgres, deployed to Railway.',
-    image: '/prettyokaystack.jpg',
-    tags: ['Next.js', 'Fastify', 'Postgres', 'Prisma', 'Clerk'],
+      'AI-powered workout app that helps you track and optimize your training.',
+    image: '/smartreps.webp',
+    tags: ['React Native', 'Convex', 'TypeScript', 'Expo', 'Design'],
   },
   {
     title: 'Buddybook',

@@ -23,12 +23,32 @@ export const timelineItems: ITimelineItem[] = [
     company: 'Pareto Software Oy',
     period: '9/2023 - Present',
     description:
-      'Leading frontend development in various client projects. Focusing on TypeScript, React, and modern web technologies.',
+      'Leading software development across diverse client projects with a focus on AI integration, full-stack web development, mobile, and design. Dedicated to building one of Finlands top AI-focused software consultancies.',
     projects: [
       {
-        name: 'Undisclosed Client',
-        period: '11/2024 – ',
-        technologies: ['TypeScript', 'JavaScript', 'React', 'Node.js'],
+        name: 'Undisclosed Client: Maritime Situational Awareness App',
+        period: '6/2025 – 12/2025',
+        description:
+          'Designed and co-developed a new user interface and related services for a maritime situational awareness platform that included a real-time 3D view, AR overlay and a map view.',
+        technologies: [
+          'React',
+          'Hono',
+          'ROS2',
+          'TailwindCSS',
+          'Design',
+          'Three.js',
+          'tRPC',
+          'WebRTC',
+          'Docker',
+          'Azure',
+        ],
+      },
+      {
+        name: 'Undisclosed Client: JavaScript to TypeScript Migration',
+        period: '11/2024 – 5/2025',
+        description:
+          'Migrated a large information management software codebase successfully from JavaScript to TypeScript. Converted ≈600k LOC legacy JavaScript code to strict-mode TypeScript, eradicating thousands of type issues and lifting test-coverage significantly.',
+        technologies: ['React', 'TypeScript', 'JavaScript', 'Jest'],
       },
       {
         name: 'Pareto Website',

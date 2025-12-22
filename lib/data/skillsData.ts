@@ -6,6 +6,7 @@ export interface ISkill {
 export const skills: ISkill[] = [
   { name: 'Next.js', level: 95 },
   { name: 'React', level: 95 },
+  { name: 'React Native', level: 90 },
   { name: 'Flutter', level: 90 },
   { name: 'Dart', level: 90 },
   { name: 'TypeScript', level: 92 },
@@ -15,6 +16,7 @@ export const skills: ISkill[] = [
   { name: 'C#', level: 80 },
   { name: 'Figma', level: 90 },
   { name: 'Supabase', level: 85 },
+  { name: 'Convex', level: 85 },
   { name: 'C++', level: 60 },
   { name: 'iOS, MacOS', level: 90 },
   { name: 'SwiftUI', level: 67 },
@@ -31,4 +33,7 @@ export const skills: ISkill[] = [
   { name: 'Railway', level: 80 },
   { name: 'Google Cloud', level: 65 },
   { name: 'Azure', level: 60 },
+  { name: 'HTML, CSS', level: 95 },
+  { name: 'Payload CMS', level: 85 },
+  { name: 'Docker', level: 75 },
 ];
