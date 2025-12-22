@@ -1,6 +1,6 @@
 'use client';
 
-import {Award, GraduationCap} from 'lucide-react';
+import { Award, GraduationCap, ExternalLink } from 'lucide-react';
 import { certifications, educationItems } from '@/lib/data/educationData';
 import { FadeIn } from './animations/FadeIn';
 import { ScaleIn } from './animations/ScaleIn';
@@ -40,10 +40,35 @@ export default function Education() {
                 delay={index * 0.1}
                 className="rounded-lg border border-cyan-800 bg-gradient-to-r from-gray-900 to-gray-800 p-4 shadow-xl transition-colors duration-300 hover:border-cyan-600"
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold text-cyan-300">{cert}</span>
-                  <Award className="text-cyan-500" size={20} />
-                </div>
+                {cert.link ? (
+                  <a
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between"
+                  >
+                    <span className="font-semibold text-cyan-300 transition-colors group-hover:text-cyan-200">
+                      {cert.name}
+                    </span>
+                    <span className="relative h-5 w-5">
+                      <Award
+                        className="absolute inset-0 text-cyan-500 transition-opacity group-hover:opacity-0"
+                        size={20}
+                      />
+                      <ExternalLink
+                        className="absolute inset-0 text-cyan-500 opacity-0 transition-opacity group-hover:opacity-100"
+                        size={20}
+                      />
+                    </span>
+                  </a>
+                ) : (
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold text-cyan-300">
+                      {cert.name}
+                    </span>
+                    <Award className="text-cyan-500" size={20} />
+                  </div>
+                )}
               </ScaleIn>
             ))}
           </div>
