@@ -3,6 +3,7 @@ export interface IPortfolioItem {
   description: string;
   image: string;
   tags: string[];
+  link?: string;
 }
 
 export const portfolioDescription =
@@ -15,6 +16,7 @@ export const portfolioItems: IPortfolioItem[] = [
       'AI-powered workout app that helps you track and optimize your training.',
     image: '/smartreps.webp',
     tags: ['React Native', 'Convex', 'TypeScript', 'Expo', 'Design'],
+    link: 'https://smartreps.app',
   },
   {
     title: 'Buddybook',

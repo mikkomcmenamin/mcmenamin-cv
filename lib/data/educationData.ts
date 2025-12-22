@@ -18,8 +18,12 @@ export const educationItems: IEducationItem[] = [
 ];
 
 export const certifications = [
+  'Artificial Intelligence (Aalto University)',
+  'Speech Processing (Aalto University)',
+  'Supervised Machine Learning (Aalto University)',
   'Unity Certified Programmer',
   'Elements of AI',
   'Mastering React',
   'Production Manager',
+  'Sustainable Space',
 ];

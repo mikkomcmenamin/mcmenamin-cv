@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, ExternalLink } from 'lucide-react';
 import {
   IPortfolioItem,
   portfolioDescription,
@@ -66,6 +66,18 @@ const ExpandedView = ({ item, onClose, layoutId }: ExpandedViewProps) => {
               <TechTag key={index} name={tag} />
             ))}
           </div>
+          {item.link && (
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 text-cyan-400 transition-colors hover:text-cyan-300"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <ExternalLink className="h-4 w-4" />
+              {item.link.replace('https://', '')}
+            </a>
+          )}
         </motion.div>
       </motion.div>
     </motion.div>
